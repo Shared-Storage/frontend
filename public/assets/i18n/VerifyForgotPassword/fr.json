@@ -1,0 +1,14 @@
+{
+    "heading": "Réinitialiser le mot de passe oublié",
+    "newPasswordLabel": "nouveau mot de passe",
+    "invalidNewPassword1": "Mot de passe invalide, doit comporter au moins 6 caractères.",
+    "invalidNewPassword2": "Doit comporter au moins 6 caractères.",
+    "newPasswordConfirmLabel": "Confirmation du nouveau mot de passe",
+    "invalidNewPasswordConfirm1": "Le mot de passe et le mot de passe de confirmation ne correspondent pas.",
+    "invalidNewPasswordConfirm2": "Mot de passe invalide, doit comporter au moins 6 caractères.",
+    "invalidNewPasswordConfirm3": "Doit contenir au moins 6 caractères",
+    "submitButtonText": "Réinitialiser le mot de passe",
+    "signInLinkText": "S'identifier",
+    "alertSuccess": "Succès",
+    "alertFail": "Erreur"
+}

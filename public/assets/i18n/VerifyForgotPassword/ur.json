@@ -1,0 +1,14 @@
+{
+    "heading": "بھول گئے پاس ورڈ کو دوبارہ ترتیب دیں۔",
+    "newPasswordLabel": "نیا پاس ورڈ",
+    "invalidNewPassword1": "غلط پاس ورڈ، کم از کم 6 حروف کا ہونا چاہیے۔",
+    "invalidNewPassword2": "کم از کم 6 حروف کا ہونا چاہیے۔",
+    "newPasswordConfirmLabel": "نئے پاس ورڈ کی تصدیق",
+    "invalidNewPasswordConfirm1": "پاس ورڈ اور تصدیقی پاس ورڈ مماثل نہیں ہیں۔",
+    "invalidNewPasswordConfirm2": "غلط پاس ورڈ، کم از کم 6 حروف کا ہونا چاہیے۔",
+    "invalidNewPasswordConfirm3": "کم از کم 6 حروف کا ہونا چاہیے۔",
+    "submitButtonText": "پاس ورڈ ری سیٹ",
+    "signInLinkText": "سائن ان",
+    "alertSuccess": "کامیابی",
+    "alertFail": "خرابی"
+}

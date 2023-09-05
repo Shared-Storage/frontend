@@ -1,0 +1,22 @@
+{
+  "alertSuccess": "کامیابی",
+  "alertFail": "خرابی",
+  "membershipHeading": "رکنیت",
+  "membershipSubHeading": "ایک رکنیت کا منصوبہ منتخب کریں جو آپ کے لیے بہترین ہو۔",
+  "subscriptionCancelled": "سبسکرپشن منسوخ کر دی گئی۔",
+  "subscribed": "سبسکرائب کیا",
+  "defaultSubscribed": "پہلے سے طے شدہ سبسکرائب",
+  "reactivateSubscription": "سبسکرپشن کو دوبارہ فعال کریں۔",
+  "subscribe": "سبسکرائب",
+  "updateSubscription": "سبسکرپشن کو اپ ڈیٹ کریں۔",
+  "paymentMethod": "ادائیگی کا طریقہ",
+  "changePaymentMethod": "ادائیگی کا طریقہ تبدیل کریں۔",
+  "updatePaymentMethod": "ادائیگی کا طریقہ اپ ڈیٹ کریں۔",
+  "invoiceHistory": "انوائس کی تاریخ",
+  "amount": "رقم",
+  "status": "حالت",
+  "invoice": "رسید",
+  "period": "مدت",
+  "paid": "ادا کیا",
+  "notPaid": "ادا نہیں کیا"
+}

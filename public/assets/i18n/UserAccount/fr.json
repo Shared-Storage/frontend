@@ -1,0 +1,17 @@
+{
+    "heading": "Compte",
+    "editButtonText": "Modifier",
+    "displayPictureButtonText": "Changer l'image d'affichage",
+    "firstNameLabel": "Prénom",
+    "firstNameError": "Prénom invalide.",
+    "lastNameLabel": "Nom de famille",
+    "lastNameError": "Nom de famille invalide.",
+    "emailLabel": "E-mail",
+    "emailError": "Email invalide",
+    "bioLabel": "Bio",
+    "submitButtonText": "Mise à jour",
+    "alertSuccess": "Succès",
+    "alertUpdated": "Mis à jour",
+    "alertFail": "Erreur",
+    "changePasswordButtonText": "Changer le mot de passe"
+  }

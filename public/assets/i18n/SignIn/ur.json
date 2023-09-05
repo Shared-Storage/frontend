@@ -1,0 +1,13 @@
+{
+  "signIn": "سائن ان",
+  "emailLabel": "ای میل",
+  "invalidEmail": "غلط ای میل",
+  "passwordLabel": "پاس ورڈ",
+  "invalidPassword": "غلط پاسورڈ",
+  "forgotPasswordLinkText": "پاسورڈ بھول گے؟",
+  "signInButtonText": "سائن ان",
+  "signUpLinkText": "اکاؤنٹ نہیں ہے؟ ",
+  "supportLinkText": "ایک مسئلہ کا سامنا ہے؟ ",
+  "successMessageOnFormSubmit": "کامیابی",
+  "errorMessageOnFormSubmit": "خرابی"
+}

@@ -1,0 +1,22 @@
+{
+  "alertSuccess": "सफलता",
+  "alertFail": "गलती",
+  "membershipHeading": "सदस्यता",
+  "membershipSubHeading": "ऐसी सदस्यता योजना चुनें जो आपके लिए सबसे उपयुक्त हो।",
+  "subscriptionCancelled": "सदस्यता रद्द कर दी गई",
+  "subscribed": "सदस्यता लिया",
+  "defaultSubscribed": "डिफ़ॉल्ट सदस्यता ली गई",
+  "reactivateSubscription": "सदस्यता पुनः सक्रिय करें",
+  "subscribe": "सदस्यता लें",
+  "updateSubscription": "सदस्यता अद्यतन करें",
+  "paymentMethod": "भुगतान विधि",
+  "changePaymentMethod": "भुगतान का तरीका बदलें",
+  "updatePaymentMethod": "भुगतान विधि अद्यतन करें",
+  "invoiceHistory": "चालान इतिहास",
+  "amount": "मात्रा",
+  "status": "स्थिति",
+  "invoice": "चालान",
+  "period": "अवधि",
+  "paid": "चुकाया गया",
+  "notPaid": "भुगतान नहीं"
+}

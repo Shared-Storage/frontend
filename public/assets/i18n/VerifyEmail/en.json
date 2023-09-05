@@ -1,0 +1,7 @@
+{
+    "heading": "Verifying email",
+    "redirectMsg": "Wait! You will be redirected.",
+    "alertMsg": "This is an info alert — check it out!",
+    "emailVerifiedSuccessMsg": "Email successfully verified.",
+    "emailVerifiedFailMsg": "Couldn't verify email."
+}

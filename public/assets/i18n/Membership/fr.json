@@ -1,0 +1,22 @@
+{
+  "alertSuccess": "Succès",
+  "alertFail": "Erreur",
+  "membershipHeading": "Adhésion",
+  "membershipSubHeading": "Sélectionnez le plan d'adhésion qui vous convient le mieux.",
+  "subscriptionCancelled": "Abonnement annulé",
+  "subscribed": "Abonné",
+  "defaultSubscribed": "Abonné par défaut",
+  "reactivateSubscription": "Réactiver l'abonnement",
+  "subscribe": "S'abonner",
+  "updateSubscription": "Mettre à jour l'abonnement",
+  "paymentMethod": "Mode de paiement",
+  "changePaymentMethod": "Changer la méthode de paiement",
+  "updatePaymentMethod": "Mettre à jour le mode de paiement",
+  "invoiceHistory": "Historique des factures",
+  "amount": "Montant",
+  "status": "Statut",
+  "invoice": "Facture",
+  "period": "Période",
+  "paid": "Payé",
+  "notPaid": "Impayé"
+}

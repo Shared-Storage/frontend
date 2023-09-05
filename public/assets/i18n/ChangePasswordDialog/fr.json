@@ -1,0 +1,15 @@
+{
+  "title": "Changer le mot de passe",
+  "alertSuccess": "Succès",
+  "alertFail": "Échouer",
+  "currentPassword": "Mot de passe actuel",
+  "currentPasswordError": "Mot de passe incorrect",
+  "newPassword": "Nouveau mot de passe",
+  "newPasswordError": "Mot de passe incorrect",
+  "confirmNewPassword": "Confirmer le nouveau mot de passe",
+  "newPasswordMinCharacters": "Doit contenir au moins 6 caractères.",
+  "confirmNewPasswordError1": "Le mot de passe et le mot de passe de confirmation ne correspondent pas.",
+  "confirmNewPasswordError2": "Mot de passe de confirmation invalide, au moins 6 caractères.",
+  "confirmNewPasswordError3": "Doit contenir au moins 6 caractères",
+  "updatePassword": "Mettre à jour le mot de passe"
+}

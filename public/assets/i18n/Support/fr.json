@@ -1,0 +1,11 @@
+{
+    "heading": "Page d'assistance",
+    "emailLabel": "E-mail du compte avec lequel vous rencontrez des problèmes",
+    "emailError": "Email invalide",
+    "problemLabel": "Décrivez le problème que vous rencontrez",
+    "problemLabelError": "L'entrée doit être d'au moins 25 caractères",
+    "submitButtonText": "Soumettre",
+    "signInLinkText": "sortie",
+    "alertSuccess": "Succès",
+    "alertFail": "Échouer"
+  }

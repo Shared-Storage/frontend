@@ -1,0 +1,11 @@
+{
+    "preferences": "Préférences",
+    "themeLabel": "Thème",
+    "languageLabel": "Langue",
+    "submitButtonText": "Mise à jour",
+    "lightTheme": "Thème lumière",
+    "darkTheme": "Thème sombre",
+    "alertSuccess": "Succès",
+    "alertUpdated": "Mis à jour",
+    "alertFail": "Erreur"
+}

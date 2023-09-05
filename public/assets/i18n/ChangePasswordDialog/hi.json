@@ -1,0 +1,15 @@
+{
+  "title": "पासवर्ड बदलें",
+  "alertSuccess": "सफलता",
+  "alertFail": "असफल",
+  "currentPassword": "वर्तमान पासवर्ड",
+  "currentPasswordError": "अवैध पासवर्ड",
+  "newPassword": "नया पासवर्ड",
+  "newPasswordError": "अवैध पासवर्ड",
+  "confirmNewPassword": "नए पासवर्ड की पुष्टि करें",
+  "newPasswordMinCharacters": "कम से कम 6 अक्षर होने चाहिए.",
+  "confirmNewPasswordError1": "पासवर्ड और पुष्टिकरण पासवर्ड मेल नहीं खाते.",
+  "confirmNewPasswordError2": "अमान्य पुष्टि पासवर्ड, कम से कम 6 अक्षर।",
+  "confirmNewPasswordError3": "कम से कम 6 अक्षर होने चाहिए",
+  "updatePassword": "पासवर्ड अपडेट करें"
+}

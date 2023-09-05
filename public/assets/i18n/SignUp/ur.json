@@ -1,0 +1,20 @@
+{
+  "heading": "سائن اپ",
+  "firstNameLabel": "پہلا نام",
+  "firstNameError": "غلط پہلا نام۔",
+  "lastNameLabel": "آخری نام",
+  "lastNameError": "غلط آخری نام۔",
+  "emailLabel": "ای میل",
+  "emailError": "غلط ای میل",
+  "passwordLabel": "پاس ورڈ",
+  "invalidPassword": "غلط پاسورڈ",
+  "invalidPasswordMinCharacters": "کم از کم 6 حروف کا ہونا چاہیے۔",
+  "confirmPasswordLabel": "پاس ورڈ کی تصدیق کریں۔",
+  "confirmPasswordError1": "پاس ورڈ اور تصدیقی پاس ورڈ مماثل نہیں ہیں۔",
+  "confirmPasswordError2": "غلط تصدیق شدہ پاس ورڈ، کم از کم 6 حروف۔",
+  "confirmPasswordError3": "کم از کم 6 حروف کا ہونا چاہیے۔",
+  "submitButtonText": "سائن اپ",
+  "signInLinkText": "پہلے سے ہی ایک اکاؤنٹ ہے؟ ",
+  "alertSuccess": "کامیابی",
+  "alertFail": "خرابی"
+}

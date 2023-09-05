@@ -1,0 +1,17 @@
+{
+    "heading": "Account",
+    "editButtonText": "Edit account",
+    "displayPictureButtonText": "Change display picture",
+    "firstNameLabel": "First name",
+    "firstNameError": "Invalid first name.",
+    "lastNameLabel": "Last name",
+    "lastNameError": "Invalid last name.",
+    "emailLabel": "Email",
+    "emailError": "Invalid email",
+    "bioLabel": "Bio",
+    "submitButtonText": "Update",
+    "alertSuccess": "Success",
+    "alertUpdated": "Updated",
+    "alertFail": "Error",
+    "changePasswordButtonText": "Change password"
+}

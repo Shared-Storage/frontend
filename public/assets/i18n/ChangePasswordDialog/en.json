@@ -1,0 +1,15 @@
+{
+    "title": "Change password",
+    "alertSuccess": "Success",
+    "alertFail": "Fail",
+    "currentPassword": "Current password",
+    "currentPasswordError": "Invalid password",
+    "newPassword": "New password",
+    "newPasswordError": "Invalid password",
+    "confirmNewPassword": "Confirm new password",
+    "newPasswordMinCharacters": "Should be atleast 6 characters.",
+    "confirmNewPasswordError1": "Password and confirm password don't match.",
+    "confirmNewPasswordError2": "Invalid confirm password, atleast 6 characters.",
+    "confirmNewPasswordError3": "Should be atleast 6 characters & should match password.",
+    "updatePassword": "Update password"
+}

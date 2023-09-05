@@ -1,0 +1,14 @@
+{
+    "heading": "Reset Forgot Password",
+    "newPasswordLabel": "New Password",
+    "invalidNewPassword1": "Invalid password, should be minimum 6 characters.",
+    "invalidNewPassword2": "Should be minimum 6 characters.",
+    "newPasswordConfirmLabel": "New password confirm",
+    "invalidNewPasswordConfirm1": "Password and confirm password don't match.",
+    "invalidNewPasswordConfirm2": "Invalid password, should be minimum 6 characters.",
+    "invalidNewPasswordConfirm3": "Should be minimum 6 characters & should match above password.",
+    "submitButtonText": "Reset password",
+    "signInLinkText": "Sign in",
+    "alertSuccess": "Success",
+    "alertFail": "Error"
+}

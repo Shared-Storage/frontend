@@ -1,0 +1,11 @@
+{
+    "preferences": "पसंद",
+    "themeLabel": "थीम",
+    "languageLabel": "भाषा",
+    "submitButtonText": "अद्यतन",
+    "lightTheme": "प्रकाश विषय",
+    "darkTheme": "डार्क थीम",
+    "alertSuccess": "सफलता",
+    "alertUpdated": "अद्यतन",
+    "alertFail": "गलती"
+}

@@ -1,0 +1,13 @@
+{
+  "signIn": "दाखिल करना",
+  "emailLabel": "ईमेल",
+  "invalidEmail": "अमान्य ईमेल",
+  "passwordLabel": "पासवर्ड",
+  "invalidPassword": "अवैध पासवर्ड",
+  "forgotPasswordLinkText": "पासवर्ड भूल गए?",
+  "signInButtonText": "दाखिल करना",
+  "signUpLinkText": "खाता नहीं है? ",
+  "supportLinkText": "किसी समस्या का सामना करना पड़ रहा है? ",
+  "successMessageOnFormSubmit": "सफलता",
+  "errorMessageOnFormSubmit": "गलती"
+}

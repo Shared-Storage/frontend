@@ -1,0 +1,11 @@
+{
+    "heading": "Courriel non vérifié",
+    "text1": "Nous vous avons envoyé un courrier à",
+    "text2": ", veuillez cliquer sur le lien pour vérifier votre adresse e-mail. ",
+    "text3": "Si vous n'avez pas reçu l'e-mail, vous pouvez demander un autre e-mail de vérification en appuyant sur le bouton ci-dessous.",
+    "buttonText": "Envoyer à nouveau l'e-mail de vérification",
+    "successMsg": "E-mail envoyé avec succès.",
+    "failMsg": "Échec de l'envoi de l'e-mail.",
+    "linkText": "ici",
+    "text4": "Si vous ne trouvez toujours pas l'e-mail de vérification, contactez l'assistance"
+  }

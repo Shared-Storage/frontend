@@ -1,0 +1,11 @@
+{
+    "heading": "Support page",
+    "emailLabel": "Email of account you are having trouble with",
+    "emailError": "Invalid email",
+    "problemLabel": "Describe the problem you are facing",
+    "problemLabelError": "Input should be minimum 25 characters",
+    "submitButtonText": "Submit",
+    "signInLinkText": "exit",
+    "alertSuccess": "Success",
+    "alertFail": "Fail"
+}

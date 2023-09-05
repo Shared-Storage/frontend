@@ -1,0 +1,11 @@
+{
+    "heading": "سپورٹ پیج",
+    "emailLabel": "اکاؤنٹ کا ای میل جس میں آپ کو پریشانی ہو رہی ہے۔",
+    "emailError": "غلط ای میل",
+    "problemLabel": "اس مسئلے کی وضاحت کریں جس کا آپ سامنا کر رہے ہیں۔",
+    "problemLabelError": "ان پٹ کم از کم 25 حروف کا ہونا چاہیے۔",
+    "submitButtonText": "جمع کرائیں",
+    "signInLinkText": "باہر نکلیں",
+    "alertSuccess": "کامیابی",
+    "alertFail": "ناکام"
+  }

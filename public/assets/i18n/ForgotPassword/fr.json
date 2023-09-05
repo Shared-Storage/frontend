@@ -1,0 +1,9 @@
+{
+    "heading": "Mot de passe oublié",
+    "emailLabel": "E-mail",
+    "emailError": "Email invalide",
+    "submitButtonText": "Envoyer un e-mail de réinitialisation du mot de passe",
+    "signInLinkText": "Se souvenir du mot de passe? ",
+    "alertSuccess": "Succès",
+    "alertFail": "Erreur"
+  }

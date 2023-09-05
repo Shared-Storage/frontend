@@ -1,0 +1,13 @@
+{
+  "signIn": "ਸਾਈਨ - ਇਨ",
+  "emailLabel": "ਈ - ਮੇਲ",
+  "invalidEmail": "ਅਵੈਧ ਈਮੇਲ",
+  "passwordLabel": "ਪਾਸਵਰਡ",
+  "invalidPassword": "ਗਲਤ ਪਾਸਵਰਡ",
+  "forgotPasswordLinkText": "ਪਾਸਵਰਡ ਭੁੱਲ ਗਏ?",
+  "signInButtonText": "ਸਾਈਨ - ਇਨ",
+  "signUpLinkText": "ਕੀ ਤੁਹਾਡੇ ਕੋਲ ਖਾਤਾ ਨਹੀਂ ਹੈ? ",
+  "supportLinkText": "ਕਿਸੇ ਮੁੱਦੇ ਦਾ ਸਾਹਮਣਾ ਕਰ ਰਹੇ ਹੋ? ",
+  "successMessageOnFormSubmit": "ਸਫਲਤਾ",
+  "errorMessageOnFormSubmit": "ਗਲਤੀ"
+}

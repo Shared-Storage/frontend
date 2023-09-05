@@ -1,0 +1,9 @@
+{
+    "heading": "पासवर्ड भूल गए",
+    "emailLabel": "ईमेल",
+    "emailError": "अमान्य ईमेल",
+    "submitButtonText": "पासवर्ड रीसेट ईमेल भेजें",
+    "signInLinkText": "पासवर्ड याद? ",
+    "alertSuccess": "सफलता",
+    "alertFail": "गलती"
+  }

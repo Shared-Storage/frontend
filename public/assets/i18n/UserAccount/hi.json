@@ -1,0 +1,17 @@
+{
+    "heading": "खाता",
+    "editButtonText": "संपादन करना",
+    "displayPictureButtonText": "डिस्प्ले पिक्चर बदलें",
+    "firstNameLabel": "पहला नाम",
+    "firstNameError": "अमान्य पहला नाम।",
+    "lastNameLabel": "उपनाम",
+    "lastNameError": "अमान्य अंतिम नाम।",
+    "emailLabel": "ईमेल",
+    "emailError": "अमान्य ईमेल",
+    "bioLabel": "जैव",
+    "submitButtonText": "अद्यतन",
+    "alertSuccess": "सफलता",
+    "alertUpdated": "अद्यतन",
+    "alertFail": "गलती",
+    "changePasswordButtonText": "पासवर्ड बदलें"
+  }

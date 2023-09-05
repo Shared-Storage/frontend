@@ -1,0 +1,22 @@
+{
+    "alertSuccess": "Success",
+    "alertFail": "Error",
+    "membershipHeading": "Membership",
+    "membershipSubHeading": "Select a membership plan which suits you best.",
+    "subscriptionCancelled": "Subscription cancelled",
+    "subscribed": "Subscribed",
+    "defaultSubscribed": "Default subscribed",
+    "reactivateSubscription": "Reactivate subscription",
+    "subscribe": "Subscribe",
+    "updateSubscription": "Update subscription",
+    "paymentMethod": "Payment method",
+    "changePaymentMethod": "Change payment method",
+    "updatePaymentMethod": "Update payment method",
+    "invoiceHistory": "Invoice history",
+    "amount": "Amount",
+    "status": "Status",
+    "invoice": "Invoice",
+    "period": "Period",
+    "paid": "Paid",
+    "notPaid": "Not paid"
+}

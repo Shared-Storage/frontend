@@ -1,0 +1,14 @@
+{
+    "heading": "रीसेट पासवर्ड भूल गए",
+    "newPasswordLabel": "नया पासवर्ड",
+    "invalidNewPassword1": "अमान्य पासवर्ड, कम से कम 6 अक्षर का होना चाहिए।",
+    "invalidNewPassword2": "कम से कम 6 अक्षर होने चाहिए।",
+    "newPasswordConfirmLabel": "नया पासवर्ड कन्फर्म",
+    "invalidNewPasswordConfirm1": "पासवर्ड और पुष्टिकरण पासवर्ड मेल नहीं खाते।",
+    "invalidNewPasswordConfirm2": "अमान्य पासवर्ड, कम से कम 6 अक्षर का होना चाहिए।",
+    "invalidNewPasswordConfirm3": "कम से कम 6 अक्षर होने चाहिए",
+    "submitButtonText": "पासवर्ड रीसेट",
+    "signInLinkText": "दाखिल करना",
+    "alertSuccess": "सफलता",
+    "alertFail": "गलती"
+}

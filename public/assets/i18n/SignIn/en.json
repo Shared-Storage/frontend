@@ -1,0 +1,13 @@
+{
+    "signIn": "Sign In",
+    "emailLabel": "Email",
+    "invalidEmail": "Invalid email",
+    "passwordLabel": "Password",
+    "invalidPassword": "Invalid password",
+    "forgotPasswordLinkText": "Forgot password?",
+    "signInButtonText": "Sign in",
+    "signUpLinkText": "Don't have an account? Sign Up",
+    "supportLinkText": "Facing an issue? Contact us",
+    "successMessageOnFormSubmit": "Success",
+    "errorMessageOnFormSubmit": "Error"
+}

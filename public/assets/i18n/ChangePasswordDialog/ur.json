@@ -1,0 +1,15 @@
+{
+  "title": "پاس ورڈ تبدیل کریں",
+  "alertSuccess": "کامیابی",
+  "alertFail": "ناکام",
+  "currentPassword": "موجودہ خفیہ لفظ",
+  "currentPasswordError": "غلط پاسورڈ",
+  "newPassword": "نیا پاس ورڈ",
+  "newPasswordError": "غلط پاسورڈ",
+  "confirmNewPassword": "نئے پاس ورڈ کی توثیق کریں",
+  "newPasswordMinCharacters": "کم از کم 6 حروف کا ہونا چاہیے۔",
+  "confirmNewPasswordError1": "پاس ورڈ اور تصدیقی پاس ورڈ مماثل نہیں ہیں۔",
+  "confirmNewPasswordError2": "غلط تصدیق شدہ پاس ورڈ، کم از کم 6 حروف۔",
+  "confirmNewPasswordError3": "کم از کم 6 حروف کا ہونا چاہیے۔",
+  "updatePassword": "پاس ورڈ اپ ڈیٹ کریں۔"
+}

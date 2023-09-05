@@ -1,0 +1,13 @@
+{
+  "signIn": "S'identifier",
+  "emailLabel": "E-mail",
+  "invalidEmail": "Email invalide",
+  "passwordLabel": "Mot de passe",
+  "invalidPassword": "Mot de passe incorrect",
+  "forgotPasswordLinkText": "Mot de passe oublié?",
+  "signInButtonText": "S'identifier",
+  "signUpLinkText": "Vous n'avez pas de compte ? ",
+  "supportLinkText": "Face à un problème ? ",
+  "successMessageOnFormSubmit": "Succès",
+  "errorMessageOnFormSubmit": "Erreur"
+}

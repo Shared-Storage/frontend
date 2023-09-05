@@ -1,0 +1,9 @@
+{
+    "heading": "Forgot Password",
+    "emailLabel": "Email",
+    "emailError": "Invalid email",
+    "submitButtonText": "Send password reset email",
+    "signInLinkText": "Remember password? Sign in",
+    "alertSuccess": "Success",
+    "alertFail": "Error"
+}

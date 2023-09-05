@@ -1,0 +1,20 @@
+{
+    "heading": "Sign up",
+    "firstNameLabel": "First name",
+    "firstNameError": "Invalid first name.",
+    "lastNameLabel": "Last name",
+    "lastNameError": "Invalid last name.",
+    "emailLabel": "Email",
+    "emailError": "Invalid email",
+    "passwordLabel": "Password",
+    "invalidPassword": "Invalid password",
+    "invalidPasswordMinCharacters": "Should be atleast 6 characters.",
+    "confirmPasswordLabel": "Confirm password",
+    "confirmPasswordError1": "Password and confirm password don't match.",
+    "confirmPasswordError2": "Invalid confirm password, atleast 6 characters.",
+    "confirmPasswordError3": "Should be atleast 6 characters & should match password.",
+    "submitButtonText": "Sign Up",
+    "signInLinkText": "Already have an account? Sign in",
+    "alertSuccess": "Success",
+    "alertFail": "Error"
+}

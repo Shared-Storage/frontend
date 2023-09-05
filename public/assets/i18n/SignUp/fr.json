@@ -1,0 +1,20 @@
+{
+    "heading": "S'inscrire",
+    "firstNameLabel": "Prénom",
+    "firstNameError": "Prénom invalide.",
+    "lastNameLabel": "Nom de famille",
+    "lastNameError": "Nom de famille invalide.",
+    "emailLabel": "E-mail",
+    "emailError": "Email invalide",
+    "passwordLabel": "Mot de passe",
+    "invalidPassword": "Mot de passe incorrect",
+    "invalidPasswordMinCharacters": "Doit comporter au moins 6 caractères.",
+    "confirmPasswordLabel": "Confirmez le mot de passe",
+    "confirmPasswordError1": "Le mot de passe et le mot de passe de confirmation ne correspondent pas.",
+    "confirmPasswordError2": "Mot de passe de confirmation invalide, au moins 6 caractères.",
+    "confirmPasswordError3": "Doit contenir au moins 6 caractères",
+    "submitButtonText": "S'inscrire",
+    "signInLinkText": "Vous avez déjà un compte? ",
+    "alertSuccess": "Succès",
+    "alertFail": "Erreur"
+  }

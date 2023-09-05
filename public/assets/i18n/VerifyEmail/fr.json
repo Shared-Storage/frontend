@@ -1,0 +1,7 @@
+{
+    "heading": "Vérification de l'e-mail",
+    "redirectMsg": "Attendez! ",
+    "alertMsg": "Il s'agit d'une alerte d'information - consultez-la !",
+    "emailVerifiedSuccessMsg": "Courriel vérifié avec succès.",
+    "emailVerifiedFailMsg": "Impossible de vérifier l'e-mail."
+}

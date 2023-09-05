@@ -1,0 +1,11 @@
+{
+    "heading": "समर्थनकारी पृष्ठ",
+    "emailLabel": "खाते का ईमेल जिसमें आपको समस्या हो रही है",
+    "emailError": "अमान्य ईमेल",
+    "problemLabel": "आप जिस समस्या का सामना कर रहे हैं उसका वर्णन करें",
+    "problemLabelError": "इनपुट न्यूनतम 25 वर्ण का होना चाहिए",
+    "submitButtonText": "जमा करना",
+    "signInLinkText": "बाहर निकलना",
+    "alertSuccess": "सफलता",
+    "alertFail": "असफल"
+  }

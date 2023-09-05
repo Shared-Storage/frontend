@@ -1,0 +1,20 @@
+{
+    "heading": "साइन अप करें",
+    "firstNameLabel": "पहला नाम",
+    "firstNameError": "अमान्य पहला नाम।",
+    "lastNameLabel": "उपनाम",
+    "lastNameError": "अमान्य अंतिम नाम।",
+    "emailLabel": "ईमेल",
+    "emailError": "अमान्य ईमेल",
+    "passwordLabel": "पासवर्ड",
+    "invalidPassword": "अवैध पासवर्ड",
+    "invalidPasswordMinCharacters": "कम से कम 6 अक्षर होने चाहिए।",
+    "confirmPasswordLabel": "पासवर्ड की पुष्टि कीजिये",
+    "confirmPasswordError1": "पासवर्ड और पुष्टिकरण पासवर्ड मेल नहीं खाते।",
+    "confirmPasswordError2": "अमान्य पुष्टि पासवर्ड, कम से कम 6 वर्ण।",
+    "confirmPasswordError3": "कम से कम 6 अक्षर होने चाहिए",
+    "submitButtonText": "साइन अप करें",
+    "signInLinkText": "क्या आपके पास पहले से एक खाता मौजूद है? ",
+    "alertSuccess": "सफलता",
+    "alertFail": "गलती"
+  }

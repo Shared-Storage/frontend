@@ -1,0 +1,17 @@
+{
+    "heading": "کھاتہ",
+    "editButtonText": "ترمیم",
+    "displayPictureButtonText": "ڈسپلے تصویر کو تبدیل کریں۔",
+    "firstNameLabel": "پہلا نام",
+    "firstNameError": "غلط پہلا نام۔",
+    "lastNameLabel": "آخری نام",
+    "lastNameError": "غلط آخری نام۔",
+    "emailLabel": "ای میل",
+    "emailError": "غلط ای میل",
+    "bioLabel": "بایو",
+    "submitButtonText": "اپ ڈیٹ",
+    "alertSuccess": "کامیابی",
+    "alertUpdated": "تازہ کاری",
+    "alertFail": "خرابی",
+    "changePasswordButtonText": "پاس ورڈ تبدیل کریں"
+  }

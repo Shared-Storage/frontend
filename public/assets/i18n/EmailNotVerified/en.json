@@ -1,0 +1,11 @@
+{
+    "heading": "Email not verified",
+    "text1": "We have sent you a mail at",
+    "text2": ", please click the link there to verify your email. Don't forget to check spam.",
+    "text3": "In case you didn't receive the mail, you can request another verification email by pressing button below.",
+    "buttonText": "Send verification email again",
+    "successMsg": "Email successfully sent.",
+    "failMsg": "Failed to send email.",
+    "linkText": "here",
+    "text4": "If you still can't find the verification email, contact support"
+}
