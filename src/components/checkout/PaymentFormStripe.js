@@ -46,7 +46,7 @@ const CheckoutForm = (props) => {
         elements,
         // clientSecret,
         confirmParams: {
-          return_url: "http://localhost:3000",
+          return_url: process.env.REACT_APP_FRONTEND_LINK,
         },
       });
 
