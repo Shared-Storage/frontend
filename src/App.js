@@ -33,6 +33,7 @@ import { paymentsAction } from "./store/payments";
 import { subscriptionAction } from "./store/subscription";
 import { extractPlanFromSubscriptions } from "./services/payments";
 import i18next from "i18next";
+import OrganizationHome from "./components/Organization/OrganizationHome";
 
 function App() {
   const navigate = useNavigate();
@@ -88,7 +89,7 @@ function App() {
       logger.log(resp.data?.subscriptions);
       if (resp.data?.subscriptions) {
         logger.log("plan");
-        logger.log("extractPlanFromSubscriptions app.js")
+        logger.log("extractPlanFromSubscriptions app.js");
         const subscriptionDetails = await extractPlanFromSubscriptions(
           resp.data?.subscriptions
         );
@@ -167,7 +168,10 @@ function App() {
                   </ProtectedEmailVerifyRoute>
                 </ProtectedRoute>
               }
-            />
+            >
+              {/* Nested routes within Dashboard */}
+              {/* <Route path="organization-home" element={<OrganizationHome />} /> */}
+            </Route>
             <Route
               path="/email-not-verified"
               element={
