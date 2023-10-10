@@ -1,70 +1,65 @@
 import * as React from "react";
 import OrganizationCard from "./OrganizationCard";
-import { Box, SpeedDial, SpeedDialAction, SpeedDialIcon } from "@mui/material";
-import FileCopyIcon from "@mui/icons-material/FileCopyOutlined";
-import SaveIcon from "@mui/icons-material/Save";
-import PrintIcon from "@mui/icons-material/Print";
-import ShareIcon from "@mui/icons-material/Share";
-import * as logger from "./../../utils/logger";
+import CreateOrganizationDialog from "./CreateOrganizationDialog";
+import { Box } from "@mui/material";
+
 import Button from "@mui/material/Button";
-import AddIcon from '@mui/icons-material/Add';
+import AddIcon from "@mui/icons-material/Add";
+import Alert from "./../Alert";
+import * as organizationService from "../../services/organization";
+import * as logger from "../../utils/logger";
 
 const OrganizationHome = () => {
-  // const organizations=[]
-  const organizations = [
-    {
-      title: "Organization 1",
-      description: "Organization 1 description.",
-      img: "assets/images/organization_defaults/1.jpg",
-    },
-    {
-      title: "Organization 2",
-      description: "Organization 2 description.",
-      img: "assets/images/organization_defaults/2.jpg",
-    },
-    {
-      title: "Organization 3",
-      description: "Organization 3 description.",
-      img: "assets/images/organization_defaults/3.jpg",
-    },
-    {
-      title: "Organization 4",
-      description: "Organization 4 description.",
-      img: "assets/images/organization_defaults/4.jpg",
-    },
-    {
-      title: "Organization 5",
-      description: "Organization 5 description.",
-      img: "assets/images/organization_defaults/5.jpg",
-    },
-    {
-      title: "Organization 6",
-      description: "Organization 6 description.",
-      img: "assets/images/organization_defaults/6.jpg",
-    },
-    {
-      title: "Organization 7",
-      description: "Organization 7 description.",
-      img: "assets/images/organization_defaults/7.jpg",
-    },
-  ];
-  const actions = [
-    { icon: <FileCopyIcon />, name: "Copy" },
-    { icon: <SaveIcon />, name: "Save" },
-    { icon: <PrintIcon />, name: "Print" },
-    { icon: <ShareIcon />, name: "Share" },
-  ];
+  const [ownedOrganizations, setOwnedOrganizations] = React.useState([]);
+  const [sharedOrganizations, setSharedOrganizations] = React.useState([]);
+
+  const getUserOrganizations = async () => {
+    const orgs = await organizationService.getUserOrganizations();
+    setOwnedOrganizations(orgs.data.ownedOrganizations);
+    setSharedOrganizations(orgs.data.sharedOrganizations);
+  };
+  React.useEffect(() => {
+    getUserOrganizations();
+  }, []);
+
+  // Dialog Methods
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
+  const [openDialog, setOpenDialog] = React.useState(false);
+  const [openAlert, setOpenAlert] = React.useState(false);
+  const [alertMessage, setAlertMessage] = React.useState("");
+  const [alertSeverity, setAlertSeverity] = React.useState("");
+
+  const setAlertOpen = () => {
+    setOpenAlert(true);
+    setTimeout(() => {
+      setOpenAlert(false);
+    }, 3000);
+  };
+
   return (
     <>
       <h1>Organizations</h1>
-      <div style={{width: "100%", padding: "0px 35px"}}>
-        <Button variant="contained"><AddIcon />Create Organization</Button>
+      <div style={{ width: "100%", padding: "0px 35px" }}>
+        <Button
+          variant="contained"
+          onClick={() => {
+            setOpenDialog(true);
+          }}
+        >
+          <AddIcon />
+          Create Organization
+        </Button>
       </div>
       {/* <hr /> */}
-      {organizations.length === 0 && (
-        <div style={{marginTop: "150px"}}>No organization exists, you need to create one.</div>
+      <h2>Your organizations</h2>
+      {ownedOrganizations.length === 0 && (
+        <div style={{ marginTop: "150px" }}>
+          You don't own an organization, you need to create one.
+        </div>
       )}
-      {organizations.length > 0 && (
+      {ownedOrganizations.length > 0 && (
         <Box
           sx={{
             display: "flex",
@@ -72,7 +67,7 @@ const OrganizationHome = () => {
             padding: "10px 15px",
           }}
         >
-          {organizations.map((org, index) => {
+          {ownedOrganizations.map((org, index) => {
             return (
               <OrganizationCard
                 key={index}
@@ -84,6 +79,40 @@ const OrganizationHome = () => {
           })}
         </Box>
       )}
+      {sharedOrganizations.length > 0 && <hr />}
+      {sharedOrganizations.length > 0 && <h2>Shared organizations</h2>}
+      {sharedOrganizations.length > 0 && (
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            padding: "10px 15px",
+          }}
+        >
+          {sharedOrganizations.map((org, index) => {
+            return (
+              <OrganizationCard
+                key={index}
+                title={org.title}
+                description={org.description}
+                img={org.img}
+              />
+            );
+          })}
+        </Box>
+      )}
+      <CreateOrganizationDialog
+        handleClose={handleCloseDialog}
+        open={openDialog}
+        // Alert methods
+        openAlert={openAlert}
+        setAlertSeverity={setAlertSeverity}
+        setAlertOpen={setAlertOpen}
+        setAlertMessage={setAlertMessage}
+        refreshOrganizations={getUserOrganizations}
+      />
+      {/* Error, info, warning and success */}
+      <Alert severity={alertSeverity} open={openAlert} message={alertMessage} />
     </>
   );
 };
