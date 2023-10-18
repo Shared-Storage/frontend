@@ -68,14 +68,7 @@ const OrganizationHome = () => {
           }}
         >
           {ownedOrganizations.map((org, index) => {
-            return (
-              <OrganizationCard
-                key={index}
-                title={org.title}
-                description={org.description}
-                img={org.img}
-              />
-            );
+            return <OrganizationCard key={index} organization={org} owned={true} />;
           })}
         </Box>
       )}
@@ -90,14 +83,7 @@ const OrganizationHome = () => {
           }}
         >
           {sharedOrganizations.map((org, index) => {
-            return (
-              <OrganizationCard
-                key={index}
-                title={org.title}
-                description={org.description}
-                img={org.img}
-              />
-            );
+            return <OrganizationCard key={index} organization={org} owned={false} />;
           })}
         </Box>
       )}
