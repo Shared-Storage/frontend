@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import { CardActionArea } from "@mui/material";
 import * as logger from "./../../utils/logger";
 import { useSelector } from "react-redux";
+import * as organizationServices from "./../../services/organization";
 
 export default function OrganizationCard(props) {
   const userData = useSelector((state) => {
@@ -25,13 +26,20 @@ export default function OrganizationCard(props) {
         )?.status
       );
     }
-    logger.log("props?.organization?.orgMembers");
-    logger.log(props?.organization?.orgMembers);
-    logger.log("userData.email");
-    logger.log(userData.email);
-    logger.log("memberStatus");
-    logger.log(memberStatus);
   }, [userData.email, props?.organization?.orgMembers, props?.organization]);
+
+  const acceptInvitationSubmit = () => {
+    logger.log("Accept submit");
+    organizationServices.acceptInvitationToOrganization({organizationId: props?.organization?._id});
+  };
+  const declineInvitationSubmit = () => {
+    logger.log("Decline submit");
+    organizationServices.declineInvitationToOrganization({organizationId: props?.organization?._id});
+  };
+  const cardSubmit = () => {
+    logger.log("Card submit");
+  };
+
   const content = (props) => (
     <>
       <CardMedia
@@ -57,10 +65,18 @@ export default function OrganizationCard(props) {
           <span>Invited by {props?.organization?.owner?.email}:</span>
           <br />
           <CardActions>
-            <Button size="small" color="success">
+            <Button
+              size="small"
+              color="success"
+              onClick={acceptInvitationSubmit}
+            >
               Accept
             </Button>
-            <Button size="small" color="error">
+            <Button
+              size="small"
+              color="error"
+              onClick={declineInvitationSubmit}
+            >
               Decline
             </Button>
           </CardActions>
@@ -71,7 +87,7 @@ export default function OrganizationCard(props) {
 
   return (
     <Card sx={{ maxWidth: 345, margin: "25px auto" }} elevation={10}>
-      <CardActionArea>
+      <CardActionArea onClick={cardSubmit}>
         {(props?.owned || (!props?.owned && memberStatus !== "pending")) &&
           content(props)}
       </CardActionArea>

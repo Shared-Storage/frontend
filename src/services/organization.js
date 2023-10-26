@@ -5,7 +5,9 @@ export const createOrganization = async (data) => {
   try {
     const response = await axios({
       method: "post",
-      url: process.env.REACT_APP_BACKEND_LINK + "/v1/organization/create-organization",
+      url:
+        process.env.REACT_APP_BACKEND_LINK +
+        "/v1/organization/create-organization",
       data: {
         title: data.title,
         description: data.description,
@@ -24,7 +26,40 @@ export const getUserOrganizations = async (data) => {
   try {
     const response = await axios({
       method: "get",
-      url: process.env.REACT_APP_BACKEND_LINK + "/v1/organization/get-organizations"
+      url:
+        process.env.REACT_APP_BACKEND_LINK +
+        "/v1/organization/get-organizations",
+    });
+    return response;
+  } catch (error) {
+    logger.error(error);
+    throw Error(error.message);
+  }
+};
+
+export const acceptInvitationToOrganization = async (data) => {
+  try {
+    const response = await axios({
+      method: "post",
+      url:
+        process.env.REACT_APP_BACKEND_LINK +
+        "/v1/organization/accept-invitation",
+      data: { ...data },
+    });
+    return response;
+  } catch (error) {
+    logger.error(error);
+    throw Error(error.message);
+  }
+};
+export const declineInvitationToOrganization = async (data) => {
+  try {
+    const response = await axios({
+      method: "post",
+      url:
+        process.env.REACT_APP_BACKEND_LINK +
+        "/v1/organization/decline-invitation",
+      data: { ...data },
     });
     return response;
   } catch (error) {
