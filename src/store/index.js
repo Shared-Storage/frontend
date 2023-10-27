@@ -4,6 +4,8 @@ import userReducer from "./user";
 import preferenceReducer from "./preferences";
 import subscriptionReducer from "./subscription";
 import paymentsReducer from "./payments";
+import organizationReducer from "./organization";
+import organizationsReducer from "./organizations";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +14,8 @@ const store = configureStore({
     preferences: preferenceReducer,
     subscription: subscriptionReducer,
     payments: paymentsReducer,
+    organization: organizationReducer,
+    organizations: organizationsReducer
   },
 });
 

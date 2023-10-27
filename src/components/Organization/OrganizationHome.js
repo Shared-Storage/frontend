@@ -7,16 +7,25 @@ import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import Alert from "./../Alert";
 import * as organizationService from "../../services/organization";
+import { useDispatch } from "react-redux";
+import { organizationsActions } from "./../../store/organizations";
+import { useSelector } from "react-redux";
 import * as logger from "../../utils/logger";
 
 const OrganizationHome = () => {
-  const [ownedOrganizations, setOwnedOrganizations] = React.useState([]);
-  const [sharedOrganizations, setSharedOrganizations] = React.useState([]);
-
+  const dispatch = useDispatch();
+  const organizationsState = useSelector((state) => {
+    return state.organizations;
+  });
   const getUserOrganizations = async () => {
     const orgs = await organizationService.getUserOrganizations();
-    setOwnedOrganizations(orgs.data.ownedOrganizations);
-    setSharedOrganizations(orgs.data.sharedOrganizations);
+    // Set redux state
+    dispatch(
+      organizationsActions.setOrganizationsState({
+        ownedOrganizations: orgs.data.ownedOrganizations,
+        sharedOrganizations: orgs.data.sharedOrganizations,
+      })
+    );
   };
   React.useEffect(() => {
     getUserOrganizations();
@@ -54,12 +63,12 @@ const OrganizationHome = () => {
       </div>
       {/* <hr /> */}
       <h2>Your organizations</h2>
-      {ownedOrganizations.length === 0 && (
+      {organizationsState.ownedOrganizations.length === 0 && (
         <div style={{ marginTop: "150px" }}>
           You don't own an organization, you need to create one.
         </div>
       )}
-      {ownedOrganizations.length > 0 && (
+      {organizationsState.ownedOrganizations.length > 0 && (
         <Box
           sx={{
             display: "flex",
@@ -67,14 +76,16 @@ const OrganizationHome = () => {
             padding: "10px 15px",
           }}
         >
-          {ownedOrganizations.map((org, index) => {
-            return <OrganizationCard key={index} organization={org} owned={true} />;
+          {organizationsState.ownedOrganizations.map((org, index) => {
+            return (
+              <OrganizationCard key={index} organization={org} owned={true} />
+            );
           })}
         </Box>
       )}
-      {sharedOrganizations.length > 0 && <hr />}
-      {sharedOrganizations.length > 0 && <h2>Shared organizations</h2>}
-      {sharedOrganizations.length > 0 && (
+      {organizationsState.sharedOrganizations.length > 0 && <hr />}
+      {organizationsState.sharedOrganizations.length > 0 && <h2>Shared organizations</h2>}
+      {organizationsState.sharedOrganizations.length > 0 && (
         <Box
           sx={{
             display: "flex",
@@ -82,8 +93,10 @@ const OrganizationHome = () => {
             padding: "10px 15px",
           }}
         >
-          {sharedOrganizations.map((org, index) => {
-            return <OrganizationCard key={index} organization={org} owned={false} />;
+          {organizationsState.sharedOrganizations.map((org, index) => {
+            return (
+              <OrganizationCard key={index} organization={org} owned={false} />
+            );
           })}
         </Box>
       )}
