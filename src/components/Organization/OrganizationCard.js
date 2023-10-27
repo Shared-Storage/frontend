@@ -28,13 +28,17 @@ export default function OrganizationCard(props) {
     }
   }, [userData.email, props?.organization?.orgMembers, props?.organization]);
 
-  const acceptInvitationSubmit = () => {
+  const acceptInvitationSubmit = async () => {
     logger.log("Accept submit");
-    organizationServices.acceptInvitationToOrganization({organizationId: props?.organization?._id});
+    await organizationServices.acceptInvitationToOrganization({organizationId: props?.organization?._id});
+    // Refresh organizations
+    props.refreshOrganizations()
   };
-  const declineInvitationSubmit = () => {
+  const declineInvitationSubmit = async () => {
     logger.log("Decline submit");
-    organizationServices.declineInvitationToOrganization({organizationId: props?.organization?._id});
+    await organizationServices.declineInvitationToOrganization({organizationId: props?.organization?._id});
+    // Refresh organizations
+    props.refreshOrganizations()
   };
   const cardSubmit = () => {
     logger.log("Card submit");

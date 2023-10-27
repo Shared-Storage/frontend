@@ -101,7 +101,7 @@ const OrganizationHome = () => {
           {organizationsState.sharedOrganizations.map((org, index) => {
             return org?.orgMembers.find((org) => org.email === userData.email)
               ?.status !== "declined" ? (
-              <OrganizationCard key={index} organization={org} owned={false} />
+              <OrganizationCard key={index} organization={org} owned={false} refreshOrganizations={getUserOrganizations} />
             ) : null;
           })}
         </Box>
