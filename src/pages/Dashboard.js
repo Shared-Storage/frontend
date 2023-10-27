@@ -29,7 +29,7 @@ const Dashboard = () => {
         <br />
         {paymentsData?.billingDetails?.billingName}
       </Container> */}
-      <OrganizationHome />
+      {/* <OrganizationHome /> */}
       <Outlet />
     </>
   );

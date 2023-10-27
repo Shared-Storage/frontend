@@ -7,17 +7,19 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { CardActionArea } from "@mui/material";
 import * as logger from "./../../utils/logger";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as organizationServices from "./../../services/organization";
+import { organizationAction } from "./../../store/organization";
+import { useNavigate } from "react-router-dom";
 
 export default function OrganizationCard(props) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const userData = useSelector((state) => {
     return state.user;
   });
   const [memberStatus, setMemberStatus] = React.useState();
   React.useEffect(() => {
-    logger.log("props.organization");
-    logger.log(props?.organization);
     // set status
     if (userData.email) {
       setMemberStatus(
@@ -30,18 +32,27 @@ export default function OrganizationCard(props) {
 
   const acceptInvitationSubmit = async () => {
     logger.log("Accept submit");
-    await organizationServices.acceptInvitationToOrganization({organizationId: props?.organization?._id});
+    await organizationServices.acceptInvitationToOrganization({
+      organizationId: props?.organization?._id,
+    });
     // Refresh organizations
-    props.refreshOrganizations()
+    props.refreshOrganizations();
   };
   const declineInvitationSubmit = async () => {
     logger.log("Decline submit");
-    await organizationServices.declineInvitationToOrganization({organizationId: props?.organization?._id});
+    await organizationServices.declineInvitationToOrganization({
+      organizationId: props?.organization?._id,
+    });
     // Refresh organizations
-    props.refreshOrganizations()
+    props.refreshOrganizations();
   };
-  const cardSubmit = () => {
+  const cardSubmit = (organization) => {
     logger.log("Card submit");
+    logger.log(organization);
+    // Set organization state
+    dispatch(organizationAction.setOrganizationState(organization));
+    // Navigate to new page
+    navigate("/dashboard/organization")
   };
 
   const content = (props) => (
@@ -91,7 +102,7 @@ export default function OrganizationCard(props) {
 
   return (
     <Card sx={{ maxWidth: 345, margin: "25px auto" }} elevation={10}>
-      <CardActionArea onClick={cardSubmit}>
+      <CardActionArea onClick={() => cardSubmit(props?.organization)}>
         {(props?.owned || (!props?.owned && memberStatus !== "pending")) &&
           content(props)}
       </CardActionArea>

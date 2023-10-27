@@ -34,6 +34,7 @@ import { subscriptionAction } from "./store/subscription";
 import { extractPlanFromSubscriptions } from "./services/payments";
 import i18next from "i18next";
 import OrganizationHome from "./components/Organization/OrganizationHome";
+import OrganizationWorkSpace from "./components/Organization/OrganizationWorkSpace";
 
 function App() {
   const navigate = useNavigate();
@@ -170,7 +171,8 @@ function App() {
               }
             >
               {/* Nested routes within Dashboard */}
-              {/* <Route path="organization-home" element={<OrganizationHome />} /> */}
+              <Route path="" element={<OrganizationHome />} />
+              <Route path="organization" element={<OrganizationWorkSpace />} />
             </Route>
             <Route
               path="/email-not-verified"
