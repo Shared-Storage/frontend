@@ -37,6 +37,21 @@ export const getUserOrganizations = async (data) => {
   }
 };
 
+export const getOrganizationFromId = async (organizationId) => {
+  try {
+    const response = await axios({
+      method: "get",
+      url:
+        process.env.REACT_APP_BACKEND_LINK +
+        `/v1/organization/get-organization/${organizationId}`,
+    });
+    return response;
+  } catch (error) {
+    logger.error(error);
+    throw Error(error.message);
+  }
+};
+
 export const acceptInvitationToOrganization = async (data) => {
   try {
     const response = await axios({

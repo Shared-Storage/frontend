@@ -172,7 +172,7 @@ function App() {
             >
               {/* Nested routes within Dashboard */}
               <Route path="" element={<OrganizationHome />} />
-              <Route path="organization" element={<OrganizationWorkSpace />} />
+              <Route path="organization/:organizationId" element={<OrganizationWorkSpace />} />
             </Route>
             <Route
               path="/email-not-verified"

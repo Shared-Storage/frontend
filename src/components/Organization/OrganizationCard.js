@@ -49,10 +49,8 @@ export default function OrganizationCard(props) {
   const cardSubmit = (organization) => {
     logger.log("Card submit");
     logger.log(organization);
-    // Set organization state
-    dispatch(organizationAction.setOrganizationState(organization));
     // Navigate to new page
-    navigate("/dashboard/organization")
+    navigate(`/dashboard/organization/${organization?._id}`)
   };
 
   const content = (props) => (
