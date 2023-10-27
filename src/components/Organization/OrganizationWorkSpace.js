@@ -15,26 +15,26 @@ const OrganizationWorkSpace = () => {
   });
 
   const [organizationId, setOrganizationId] = React.useState(undefined);
-  const getOrganization = async (organizationId) => {
-    const response = await organizationService.getOrganizationFromId(
-      organizationId
-    );
-    // Set organization state
-    logger.log("Set organization state");
-    dispatch(
-      organizationAction.setOrganizationState(response?.data?.organization)
-    );
-  };
 
   React.useEffect(() => {
     setOrganizationId(params?.organizationId);
   }, [params?.organizationId]);
 
   React.useEffect(() => {
+    const getOrganization = async (organizationId) => {
+      const response = await organizationService.getOrganizationFromId(
+        organizationId
+      );
+      // Set organization state
+      logger.log("Set organization state");
+      dispatch(
+        organizationAction.setOrganizationState(response?.data?.organization)
+      );
+    };
     if (organizationId) {
       getOrganization(organizationId);
     }
-  }, [organizationId, getOrganization]);
+  }, [organizationId, dispatch]);
 
   return (
     <>
