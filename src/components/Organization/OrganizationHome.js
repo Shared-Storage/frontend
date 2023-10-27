@@ -17,6 +17,9 @@ const OrganizationHome = () => {
   const organizationsState = useSelector((state) => {
     return state.organizations;
   });
+  const userData = useSelector((state) => {
+    return state.user;
+  });
   const getUserOrganizations = async () => {
     const orgs = await organizationService.getUserOrganizations();
     // Set redux state
@@ -84,7 +87,9 @@ const OrganizationHome = () => {
         </Box>
       )}
       {organizationsState.sharedOrganizations.length > 0 && <hr />}
-      {organizationsState.sharedOrganizations.length > 0 && <h2>Shared organizations</h2>}
+      {organizationsState.sharedOrganizations.length > 0 && (
+        <h2>Shared organizations</h2>
+      )}
       {organizationsState.sharedOrganizations.length > 0 && (
         <Box
           sx={{
@@ -94,9 +99,10 @@ const OrganizationHome = () => {
           }}
         >
           {organizationsState.sharedOrganizations.map((org, index) => {
-            return (
+            return org?.orgMembers.find((org) => org.email === userData.email)
+              ?.status !== "declined" ? (
               <OrganizationCard key={index} organization={org} owned={false} />
-            );
+            ) : null;
           })}
         </Box>
       )}
