@@ -7,13 +7,11 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { CardActionArea } from "@mui/material";
 import * as logger from "./../../utils/logger";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import * as organizationServices from "./../../services/organization";
-import { organizationAction } from "./../../store/organization";
 import { useNavigate } from "react-router-dom";
 
 export default function OrganizationCard(props) {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const userData = useSelector((state) => {
     return state.user;

@@ -34,7 +34,7 @@ const OrganizationWorkSpace = () => {
     if (organizationId) {
       getOrganization(organizationId);
     }
-  }, [organizationId]);
+  }, [organizationId, getOrganization]);
 
   return (
     <>
