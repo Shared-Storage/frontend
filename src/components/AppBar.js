@@ -12,7 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import BreakfastDiningIcon from '@mui/icons-material/BreakfastDining';
+import WarehouseIcon from '@mui/icons-material/Warehouse';
 import { FormControl, InputLabel, Select, NativeSelect } from "@mui/material";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -163,7 +163,7 @@ function ResponsiveAppBar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <BreakfastDiningIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <WarehouseIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -179,7 +179,7 @@ function ResponsiveAppBar() {
               textDecoration: "none",
             }}
           >
-            BREAD-BUTTER
+            SHARED-STORAGE
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -223,7 +223,7 @@ function ResponsiveAppBar() {
               </Menu>
             )}
           </Box>
-          <BreakfastDiningIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <WarehouseIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -240,7 +240,7 @@ function ResponsiveAppBar() {
               textDecoration: "none",
             }}
           >
-            BREAD-BUTTER
+            SHARED-STORAGE
           </Typography>
           {!loading && (
             <FormControl style={{ margin: 5 }}>

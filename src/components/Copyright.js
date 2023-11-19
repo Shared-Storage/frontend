@@ -11,7 +11,7 @@ function Copyright(props) {
       {...props}
     >
       {t("copyright")}{" © "}
-      breadbutter.dev {new Date().getFullYear()}
+      Shared storage {new Date().getFullYear()}
       {"."}
     </Typography>
   );
