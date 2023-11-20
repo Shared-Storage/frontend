@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as logger from "../utils/logger";
+import { createLocation } from "./storage";
 
 export const createOrganization = async (data) => {
   try {
@@ -13,9 +14,16 @@ export const createOrganization = async (data) => {
         description: data.description,
         img: data.img,
         orgMembers: data.orgMembers,
-        orgLocations: data.orgLocations,
       },
     });
+    // Create location in storage
+    data.orgLocations.forEach(async (location) => {
+      await createLocation({
+        ...location,
+        organizationId: response?.data?.organization?._id,
+      });
+    });
+
     return response;
   } catch (error) {
     logger.error(error);

@@ -5,6 +5,9 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
+import LocationTab from "./tabs/LocationTab";
+import ItemTab from "./tabs/ItemTab";
+
 function OrganizationTabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -53,19 +56,15 @@ export default function OrganizationBasicTabs() {
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab label="Inventory" {...a11yProps(0)} />
-          <Tab label="Recipes" {...a11yProps(1)} />
-          <Tab label="Settings" {...a11yProps(2)} />
+          <Tab label="Storage location" {...a11yProps(0)} />
+          <Tab label="Items" {...a11yProps(1)} />
         </Tabs>
       </Box>
       <OrganizationTabPanel value={value} index={0}>
-        Inventory
+        <LocationTab />
       </OrganizationTabPanel>
       <OrganizationTabPanel value={value} index={1}>
-        Recipes
-      </OrganizationTabPanel>
-      <OrganizationTabPanel value={value} index={2}>
-        Settings
+        <ItemTab />
       </OrganizationTabPanel>
     </Box>
   );
