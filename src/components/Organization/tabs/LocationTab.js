@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Box } from "@mui/material";
 
-import * as logger from "./../../../utils/logger";
 import * as storageService from "./../../../services/storage";
 import LocationCard from "./LocationCard";
 
