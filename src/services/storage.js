@@ -9,6 +9,7 @@ export const createLocation = async (data) => {
       data: {
         name: data.name,
         organization_id: data.organizationId,
+        img: data?.img
       },
     });
     return response;
