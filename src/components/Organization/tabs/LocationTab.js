@@ -54,7 +54,7 @@ const LocationTab = (props) => {
       >
         {locations.map((location, index) => {
             return (
-        <LocationCard index={index} location={location}></LocationCard>)})}
+        <LocationCard key={index} location={location}></LocationCard>)})}
       </Box>
       
       <CreateLocationDialog
