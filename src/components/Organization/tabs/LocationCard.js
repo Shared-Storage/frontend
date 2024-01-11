@@ -13,7 +13,7 @@ const LocationCard = (props) => {
           component="img"
           height="140"
           image={props.location.img ? props.location.img : "/assets/images/location-default.jpeg"}
-          alt="green iguana"
+          alt="location"
         />
         <CardContent>
           <Typography gutterBottom variant="h6" component="div">
