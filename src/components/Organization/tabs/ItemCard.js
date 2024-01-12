@@ -7,17 +7,20 @@ import Typography from "@mui/material/Typography";
 
 const ItemCard = (props) => {
   return (
-    <Card sx={{ maxWidth: 345, margin: "25px auto" }} elevation={10}>
+    <Card sx={{ maxWidth: 345, margin: "25px auto", width: 300 }} elevation={10}>
       {/* <CardActionArea> */}
         <CardMedia
           component="img"
           height="140"
-          image={props.location.img ? props.location.img : "/assets/images/location-default.jpeg"}
+          image={props.location.imageUrl ? props.location.imageUrl : "/assets/images/location-default.jpeg"}
           alt="green iguana"
         />
         <CardContent>
-          <Typography gutterBottom variant="h6" component="div">
+          <Typography gutterBottom variant="h5" component="div">
             {props.location.name}
+          </Typography>
+          <Typography gutterBottom variant="p" component="div" align="left">
+            {props.location.description}
           </Typography>
         </CardContent>
       {/* </CardActionArea> */}

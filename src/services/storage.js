@@ -24,13 +24,13 @@ export const createItem = async (data) => {
   try {
     const response = await axios({
       method: "post",
-      url: process.env.REACT_APP_STORAGE_SERVICE_BACKEND_LINK + "/item",
+      url: process.env.REACT_APP_STORAGE_SERVICE_BACKEND_LINK + "/v1/item",
       data: {
+        organizationId: data.organizationId,
+        locationId: data?.locationId,
         name: data.name,
-        organization_id: data.organizationId,
-        img: data.img,
-        note: data?.note,
-        location_id: data?.locationId,
+        imageUrl: data.imageUrl,
+        description: data?.description,
       },
     });
     return response;
@@ -47,7 +47,7 @@ export const getLocationsByOrganization = async (data) => {
       method: "get",
       url:
         process.env.REACT_APP_STORAGE_SERVICE_BACKEND_LINK +
-        "/locations/" +
+        "/v1/location/org/" +
         data.organizationId
     });
     return response;
@@ -63,7 +63,7 @@ export const getItemsByOrganization = async (data) => {
       method: "get",
       url:
         process.env.REACT_APP_STORAGE_SERVICE_BACKEND_LINK +
-        "/items/" +
+        "/v1/item/org/" +
         data.organizationId
     });
     return response;

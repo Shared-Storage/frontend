@@ -60,8 +60,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    logger.log("userPreferences in useEffect");
-    logger.log(userPreferences);
     if (userPreferences.theme !== undefined) {
       setThemeMethod(userPreferences.theme);
     }
@@ -71,30 +69,18 @@ function App() {
   }, [userPreferences, userPreferences.language, userPreferences.theme]);
 
   const setUserState = async (something) => {
-    logger.log("SetUserState method");
     try {
       const resp = await something;
-      logger.log("Incoming data on log in response.data.userData");
-      logger.log(resp.data);
-      logger.log("resp.data");
-      logger.log(resp.data);
       dispatch(userAction.setUser(resp.data));
       if (resp.data?.preferences) {
         dispatch(preferenceAction.setUserPreference(resp.data?.preferences));
       }
       // Set billing state
-      logger.log("resp.data?.payments");
-      logger.log(resp.data?.payments);
-
-      logger.log("resp.data?.subscriptions!!!!");
-      logger.log(resp.data?.subscriptions);
       if (resp.data?.subscriptions) {
-        logger.log("plan");
-        logger.log("extractPlanFromSubscriptions app.js");
         const subscriptionDetails = await extractPlanFromSubscriptions(
           resp.data?.subscriptions
         );
-        logger.log(subscriptionDetails);
+
         dispatch(subscriptionAction.setSubscription(subscriptionDetails));
       }
 
@@ -172,7 +158,10 @@ function App() {
             >
               {/* Nested routes within Dashboard */}
               <Route path="" element={<OrganizationHome />} />
-              <Route path="organization/:organizationId" element={<OrganizationWorkSpace />} />
+              <Route
+                path="organization/:organizationId"
+                element={<OrganizationWorkSpace />}
+              />
             </Route>
             <Route
               path="/email-not-verified"

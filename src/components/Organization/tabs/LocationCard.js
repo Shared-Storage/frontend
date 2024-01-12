@@ -6,20 +6,32 @@ import Typography from "@mui/material/Typography";
 // import { CardActionArea } from "@mui/material";
 
 const LocationCard = (props) => {
+  const maxDescriptionCharacterCount = 70;
   return (
-    <Card sx={{ maxWidth: 345, margin: "25px auto" }} elevation={10}>
+    <Card
+      sx={{ maxWidth: 345, margin: "25px auto", width: 300 }}
+      elevation={10}
+    >
       {/* <CardActionArea> */}
-        <CardMedia
-          component="img"
-          height="140"
-          image={props.location.img ? props.location.img : "/assets/images/location-default.jpeg"}
-          alt="location"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h6" component="div">
-            {props.location.name}
-          </Typography>
-        </CardContent>
+      <CardMedia
+        component="img"
+        height="140"
+        image={
+          props.location.imageUrl
+            ? props.location.imageUrl
+            : "/assets/images/location-default.jpeg"
+        }
+        alt="location"
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {props.location.name}
+        </Typography>
+        <Typography gutterBottom variant="p" component="div" align="left">
+          {props.location.description.substring(0, maxDescriptionCharacterCount)}
+          {props.location.description.length > maxDescriptionCharacterCount ? "..." : ""}
+        </Typography>
+      </CardContent>
       {/* </CardActionArea> */}
     </Card>
   );

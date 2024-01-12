@@ -9,11 +9,10 @@ import CreateItemDialog from "./CreateItemDialog";
 import Alert from "./../../Alert";
 
 const ItemTab = (props) => {
+  const params = useParams();
 
-    const params = useParams();
-
-  const [locations, setLocations]=useState([])
-  const [openCreateDialog, setOpenCreateDialog]=useState(false)
+  const [locations, setLocations] = useState([]);
+  const [openCreateDialog, setOpenCreateDialog] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [alertSeverity, setAlertSeverity] = useState("");
@@ -29,11 +28,11 @@ const ItemTab = (props) => {
     const locationsList = await storageService.getItemsByOrganization({
       organizationId: params?.organizationId,
     });
-    setLocations(locationsList.data)
+    setLocations(locationsList?.data?.items);
   };
   useEffect(() => {
     getLocations();
-  },[]);
+  }, []);
 
   return (
     <>
@@ -54,9 +53,7 @@ const ItemTab = (props) => {
         }}
       >
         {locations.map((location, index) => {
-          return (
-            <ItemCard key={index} location={location}></ItemCard>
-          );
+          return <ItemCard key={index} location={location}></ItemCard>;
         })}
       </Box>
 

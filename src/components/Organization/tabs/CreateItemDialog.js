@@ -79,12 +79,11 @@ export default function CreateItemDialog(props) {
     handleSubmit,
     formState: { errors },
     reset,
-    control,
   } = useForm({
     defaultValues: {
       name: null,
-      img: null,
-      note: "",
+      imageUrl: null,
+      description: "",
       locationId: null,
     },
   });
@@ -95,7 +94,7 @@ export default function CreateItemDialog(props) {
       organizationId: params?.organizationId,
     });
 
-    setLocations(response?.data);
+    setLocations(response?.data?.locations);
   };
   React.useEffect(() => {
     getLocations();
@@ -193,12 +192,12 @@ export default function CreateItemDialog(props) {
                   </Skeleton>
                 ) : (
                   <TextField
-                    {...register("img", { required: true })}
+                    {...register("imageUrl", { required: true })}
                     type="text"
                     label={"Image uri"}
                     fullWidth
-                    error={Boolean(errors.img)}
-                    helperText={errors.img ? "Image error" : ""}
+                    error={Boolean(errors.imageUrl)}
+                    helperText={errors.imageUrl ? "imageUrl error" : ""}
                     required
                   />
                 )}
@@ -224,7 +223,7 @@ export default function CreateItemDialog(props) {
                       <MenuItem value={0} key={0}>Select location</MenuItem>
                       {locations.map((location) => {
                         return (
-                          <MenuItem value={location.id} key={location.id}>
+                          <MenuItem value={location._id} key={location._id}>
                             {location.name}
                           </MenuItem>
                         );
@@ -240,13 +239,13 @@ export default function CreateItemDialog(props) {
                   </Skeleton>
                 ) : (
                   <TextField
-                    {...register("note")}
+                    {...register("description")}
                     defaultValue={""}
                     type="text"
-                    label={"Note"}
+                    label={"Description"}
                     fullWidth
-                    error={Boolean(errors.note)}
-                    helperText={errors.note ? "Image note" : ""}
+                    error={Boolean(errors.description)}
+                    helperText={errors.description ? "Image description" : ""}
                     multiline
                     rows={4}
                   />

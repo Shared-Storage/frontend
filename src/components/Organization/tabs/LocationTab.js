@@ -28,7 +28,7 @@ const LocationTab = (props) => {
     const locationsList = await storageService.getLocationsByOrganization({
       organizationId: params?.organizationId,
     });
-    setLocations(locationsList.data)
+    setLocations(locationsList?.data?.locations)
   };
   useEffect(() => {
     getLocations();
