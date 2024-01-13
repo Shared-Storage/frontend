@@ -121,7 +121,7 @@ export default function CreateItemDialog(props) {
         // Display error
         logger.error("Couldn't retrieve organization id");
       }
-      props.refreshLocations();
+      props.refreshItems();
       props.setAlertSeverity("success");
       props.setAlertMessage("Successfully created");
       setLoading(false);

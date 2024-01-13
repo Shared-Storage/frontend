@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { Box, Button } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
@@ -11,7 +11,7 @@ import Alert from "./../../Alert";
 const ItemTab = (props) => {
   const params = useParams();
 
-  const [locations, setLocations] = useState([]);
+  const [items, setItems] = useState([]);
   const [openCreateDialog, setOpenCreateDialog] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
@@ -24,15 +24,15 @@ const ItemTab = (props) => {
     }, 3000);
   };
 
-  const getLocations = async () => {
-    const locationsList = await storageService.getItemsByOrganization({
+  const getItems = useCallback(async () => {
+    const itemsList = await storageService.getItemsByOrganization({
       organizationId: params?.organizationId,
     });
-    setLocations(locationsList?.data?.items);
-  };
+    setItems(itemsList?.data?.items);
+  },[params?.organizationId]);
   useEffect(() => {
-    getLocations();
-  }, []);
+    getItems();
+  }, [getItems]);
 
   return (
     <>
@@ -52,8 +52,8 @@ const ItemTab = (props) => {
           padding: "10px 15px",
         }}
       >
-        {locations.map((location, index) => {
-          return <ItemCard key={index} location={location}></ItemCard>;
+        {items.map((item, index) => {
+          return <ItemCard key={index} item={item}></ItemCard>;
         })}
       </Box>
 
@@ -67,7 +67,7 @@ const ItemTab = (props) => {
         setAlertSeverity={setAlertSeverity}
         setAlertOpen={setAlertOpen}
         setAlertMessage={setAlertMessage}
-        refreshLocations={getLocations}
+        refreshItems={getItems}
       />
 
       {/* Error, info, warning and success */}
