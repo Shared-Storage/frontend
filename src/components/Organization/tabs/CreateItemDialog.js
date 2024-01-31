@@ -98,16 +98,16 @@ export default function CreateItemDialog(props) {
   });
 
   const [locations, setLocations] = React.useState([]);
-  const getLocations = async () => {
-    const response = await getLocationsByOrganization({
-      organizationId: params?.organizationId,
-    });
-
-    setLocations(response?.data?.locations);
-  };
   React.useEffect(() => {
+    const getLocations = async () => {
+      const response = await getLocationsByOrganization({
+        organizationId: params?.organizationId,
+      });
+
+      setLocations(response?.data?.locations);
+    };
     getLocations();
-  }, []);
+  }, [params?.organizationId]);
 
   // Processing variables
   const [loading, setLoading] = React.useState(false);
