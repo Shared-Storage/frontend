@@ -10,7 +10,7 @@ export const createLocation = async (data) => {
         name: data.name,
         organizationId: data.organizationId,
         imageUrl: data?.imageUrl,
-        description: data?.description
+        description: data?.description,
       },
     });
     return response;
@@ -31,6 +31,7 @@ export const createItem = async (data) => {
         name: data.name,
         imageUrl: data.imageUrl,
         description: data?.description,
+        tags: data?.tags,
       },
     });
     return response;
@@ -40,7 +41,6 @@ export const createItem = async (data) => {
   }
 };
 
-
 export const getLocationsByOrganization = async (data) => {
   try {
     const response = await axios({
@@ -48,7 +48,7 @@ export const getLocationsByOrganization = async (data) => {
       url:
         process.env.REACT_APP_STORAGE_SERVICE_BACKEND_LINK +
         "/v1/location/org/" +
-        data.organizationId
+        data.organizationId,
     });
     return response;
   } catch (error) {
@@ -64,7 +64,7 @@ export const getItemsByOrganization = async (data) => {
       url:
         process.env.REACT_APP_STORAGE_SERVICE_BACKEND_LINK +
         "/v1/item/org/" +
-        data.organizationId
+        data.organizationId,
     });
     return response;
   } catch (error) {

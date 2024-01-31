@@ -2,6 +2,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { styled } from "@mui/material/styles";
 import CloseIcon from "@mui/icons-material/Close";
+import AddIcon from "@mui/icons-material/Add";
 import { useTranslation } from "react-i18next";
 import {
   DialogActions,
@@ -15,15 +16,16 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  OutlinedInput,
+  InputAdornment,
 } from "@mui/material";
-
 import { useParams } from "react-router-dom";
 
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 
 import { Skeleton } from "@mui/material";
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 
 // import * as organizationService from "../../services/organization";
 import * as logger from "../../../utils/logger";
@@ -76,6 +78,7 @@ export default function CreateItemDialog(props) {
   //Form
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors },
     reset,
@@ -85,7 +88,13 @@ export default function CreateItemDialog(props) {
       imageUrl: null,
       description: "",
       locationId: null,
+      tags: [],
     },
+  });
+
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "tags",
   });
 
   const [locations, setLocations] = React.useState([]);
@@ -220,7 +229,9 @@ export default function CreateItemDialog(props) {
                       id="demo-simple-select"
                       label="Location"
                     >
-                      <MenuItem value={0} key={0}>Select location</MenuItem>
+                      <MenuItem value={0} key={0}>
+                        Select location
+                      </MenuItem>
                       {locations.map((location) => {
                         return (
                           <MenuItem value={location._id} key={location._id}>
@@ -249,6 +260,50 @@ export default function CreateItemDialog(props) {
                     multiline
                     rows={4}
                   />
+                )}
+              </Grid>
+              <Grid item xs={12}>
+                {loading ? (
+                  <Skeleton variant="text" width="100%" height="150%">
+                    <TextField />
+                  </Skeleton>
+                ) : (
+                  <>
+                    <h3>Tags</h3>
+                    <Button
+                      variant="outlined"
+                      color="secondary"
+                      onClick={() => append("")}
+                    >
+                      Add tag <AddIcon />
+                    </Button>
+                    <br />
+                    {fields.map((item, index) => {
+                      return (
+                        <>
+                          <OutlinedInput
+                            key={item.id}
+                            {...register(`tags.${index}`)}
+                            defaultValue={""}
+                            type="text"
+                            error={Boolean(errors.tags)}
+                            helperText={errors.tags ? "Error in tags" : ""}
+                            style={{ marginTop: 5, marginRight: 5 }}
+                            endAdornment={
+                              <InputAdornment position="end">
+                                <CloseIcon
+                                  aria-label="toggle password visibility"
+                                  onClick={() => remove(index)}
+                                  edge="end"
+                                  style={{ cursor: "pointer" }}
+                                />
+                              </InputAdornment>
+                            }
+                          />
+                        </>
+                      );
+                    })}
+                  </>
                 )}
               </Grid>
             </Grid>
