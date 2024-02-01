@@ -79,11 +79,11 @@ export default function CreateOrganizationDialog(props) {
       description: null,
       orgMembers: [],
       orgLocations: [
-        { name: "Refrigerator" },
-        { name: "Freezer" },
-        { name: "Kitchen pantry" },
-        { name: "Kitchen cabinets" },
-        { name: "Cupboards and Drawers" },
+        { name: "Living room" },
+        { name: "Bedroom" },
+        { name: "Kitchen" },
+        { name: "Storage" },
+        { name: "Office desk" },
       ],
     },
   });

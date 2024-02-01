@@ -5,11 +5,12 @@ export const createLocation = async (data) => {
   try {
     const response = await axios({
       method: "post",
-      url: process.env.REACT_APP_STORAGE_SERVICE_BACKEND_LINK + "/location",
+      url: process.env.REACT_APP_STORAGE_SERVICE_BACKEND_LINK + "/v1/location/",
       data: {
         name: data.name,
-        organization_id: data.organizationId,
-        img: data?.img
+        organizationId: data.organizationId,
+        imageUrl: data?.imageUrl,
+        description: data?.description,
       },
     });
     return response;
@@ -23,13 +24,14 @@ export const createItem = async (data) => {
   try {
     const response = await axios({
       method: "post",
-      url: process.env.REACT_APP_STORAGE_SERVICE_BACKEND_LINK + "/item",
+      url: process.env.REACT_APP_STORAGE_SERVICE_BACKEND_LINK + "/v1/item",
       data: {
+        organizationId: data.organizationId,
+        locationId: data?.locationId,
         name: data.name,
-        organization_id: data.organizationId,
-        img: data.img,
-        note: data?.note,
-        location_id: data?.locationId,
+        imageUrl: data.imageUrl,
+        description: data?.description,
+        tags: data?.tags,
       },
     });
     return response;
@@ -39,15 +41,14 @@ export const createItem = async (data) => {
   }
 };
 
-
 export const getLocationsByOrganization = async (data) => {
   try {
     const response = await axios({
       method: "get",
       url:
         process.env.REACT_APP_STORAGE_SERVICE_BACKEND_LINK +
-        "/locations/" +
-        data.organizationId
+        "/v1/location/org/" +
+        data.organizationId,
     });
     return response;
   } catch (error) {
@@ -62,8 +63,8 @@ export const getItemsByOrganization = async (data) => {
       method: "get",
       url:
         process.env.REACT_APP_STORAGE_SERVICE_BACKEND_LINK +
-        "/items/" +
-        data.organizationId
+        "/v1/item/org/" +
+        data.organizationId,
     });
     return response;
   } catch (error) {

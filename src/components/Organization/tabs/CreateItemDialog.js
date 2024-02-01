@@ -2,6 +2,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { styled } from "@mui/material/styles";
 import CloseIcon from "@mui/icons-material/Close";
+import AddIcon from "@mui/icons-material/Add";
 import { useTranslation } from "react-i18next";
 import {
   DialogActions,
@@ -15,15 +16,16 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  OutlinedInput,
+  InputAdornment,
 } from "@mui/material";
-
 import { useParams } from "react-router-dom";
 
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 
 import { Skeleton } from "@mui/material";
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 
 // import * as organizationService from "../../services/organization";
 import * as logger from "../../../utils/logger";
@@ -76,30 +78,36 @@ export default function CreateItemDialog(props) {
   //Form
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors },
     reset,
-    control,
   } = useForm({
     defaultValues: {
       name: null,
-      img: null,
-      note: "",
+      imageUrl: null,
+      description: "",
       locationId: null,
+      tags: [],
     },
   });
 
-  const [locations, setLocations] = React.useState([]);
-  const getLocations = async () => {
-    const response = await getLocationsByOrganization({
-      organizationId: params?.organizationId,
-    });
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "tags",
+  });
 
-    setLocations(response?.data);
-  };
+  const [locations, setLocations] = React.useState([]);
   React.useEffect(() => {
+    const getLocations = async () => {
+      const response = await getLocationsByOrganization({
+        organizationId: params?.organizationId,
+      });
+
+      setLocations(response?.data?.locations);
+    };
     getLocations();
-  }, []);
+  }, [params?.organizationId]);
 
   // Processing variables
   const [loading, setLoading] = React.useState(false);
@@ -122,7 +130,7 @@ export default function CreateItemDialog(props) {
         // Display error
         logger.error("Couldn't retrieve organization id");
       }
-      props.refreshLocations();
+      props.refreshItems();
       props.setAlertSeverity("success");
       props.setAlertMessage("Successfully created");
       setLoading(false);
@@ -193,12 +201,12 @@ export default function CreateItemDialog(props) {
                   </Skeleton>
                 ) : (
                   <TextField
-                    {...register("img", { required: true })}
+                    {...register("imageUrl", { required: true })}
                     type="text"
                     label={"Image uri"}
                     fullWidth
-                    error={Boolean(errors.img)}
-                    helperText={errors.img ? "Image error" : ""}
+                    error={Boolean(errors.imageUrl)}
+                    helperText={errors.imageUrl ? "imageUrl error" : ""}
                     required
                   />
                 )}
@@ -221,10 +229,12 @@ export default function CreateItemDialog(props) {
                       id="demo-simple-select"
                       label="Location"
                     >
-                      <MenuItem value={0} key={0}>Select location</MenuItem>
+                      <MenuItem value={0} key={0}>
+                        Select location
+                      </MenuItem>
                       {locations.map((location) => {
                         return (
-                          <MenuItem value={location.id} key={location.id}>
+                          <MenuItem value={location._id} key={location._id}>
                             {location.name}
                           </MenuItem>
                         );
@@ -240,16 +250,60 @@ export default function CreateItemDialog(props) {
                   </Skeleton>
                 ) : (
                   <TextField
-                    {...register("note")}
+                    {...register("description")}
                     defaultValue={""}
                     type="text"
-                    label={"Note"}
+                    label={"Description"}
                     fullWidth
-                    error={Boolean(errors.note)}
-                    helperText={errors.note ? "Image note" : ""}
+                    error={Boolean(errors.description)}
+                    helperText={errors.description ? "Image description" : ""}
                     multiline
                     rows={4}
                   />
+                )}
+              </Grid>
+              <Grid item xs={12}>
+                {loading ? (
+                  <Skeleton variant="text" width="100%" height="150%">
+                    <TextField />
+                  </Skeleton>
+                ) : (
+                  <>
+                    <h3>Tags</h3>
+                    <Button
+                      variant="outlined"
+                      color="secondary"
+                      onClick={() => append("")}
+                    >
+                      Add tag <AddIcon />
+                    </Button>
+                    <br />
+                    {fields.map((item, index) => {
+                      return (
+                        <>
+                          <OutlinedInput
+                            key={item.id}
+                            {...register(`tags.${index}`)}
+                            defaultValue={""}
+                            type="text"
+                            error={Boolean(errors.tags)}
+                            helperText={errors.tags ? "Error in tags" : ""}
+                            style={{ marginTop: 5, marginRight: 5 }}
+                            endAdornment={
+                              <InputAdornment position="end">
+                                <CloseIcon
+                                  aria-label="toggle password visibility"
+                                  onClick={() => remove(index)}
+                                  edge="end"
+                                  style={{ cursor: "pointer" }}
+                                />
+                              </InputAdornment>
+                            }
+                          />
+                        </>
+                      );
+                    })}
+                  </>
                 )}
               </Grid>
             </Grid>

@@ -72,11 +72,11 @@ export default function CreateLocationDialog(props) {
     handleSubmit,
     formState: { errors },
     reset,
-    control,
   } = useForm({
     defaultValues: {
       name: null,
-      img: null,
+      imageUrl: null,
+      description: null,
     },
   });
 
@@ -99,7 +99,7 @@ export default function CreateLocationDialog(props) {
         // Display error
         logger.error("Couldn't retrieve organization id");
       }
-      props.refreshLocations()
+      props.refreshLocations();
       props.setAlertSeverity("success");
       props.setAlertMessage("Successfully created");
       setLoading(false);
@@ -168,12 +168,30 @@ export default function CreateLocationDialog(props) {
                   </Skeleton>
                 ) : (
                   <TextField
-                    {...register("img")}
+                    {...register("imageUrl")}
                     type="text"
                     label={"Image uri"}
                     fullWidth
-                    error={Boolean(errors.img)}
-                    helperText={errors.img ? "Image error" : ""}
+                    error={Boolean(errors.imageUrl)}
+                    helperText={errors.imageUrl ? "Image error" : ""}
+                  />
+                )}
+              </Grid>
+              <Grid item xs={12}>
+                {loading ? (
+                  <Skeleton variant="text" width="100%" height="150%">
+                    <TextField />
+                  </Skeleton>
+                ) : (
+                  <TextField
+                    {...register("description")}
+                    type="text"
+                    label={"Description"}
+                    fullWidth
+                    multiline
+                    rows={4}
+                    error={Boolean(errors.description)}
+                    helperText={errors.description ? "Description error" : ""}
                   />
                 )}
               </Grid>

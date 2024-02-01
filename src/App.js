@@ -27,7 +27,6 @@ import Support from "./pages/Support";
 import Membership from "./pages/Membership";
 import UserPreferences from "./pages/UserPreferences";
 import Checkout from "./pages/Checkout";
-import PaymentFormStripe from "./components/checkout/PaymentFormStripe";
 import { preferenceAction } from "./store/preferences";
 import { paymentsAction } from "./store/payments";
 import { subscriptionAction } from "./store/subscription";
@@ -47,6 +46,32 @@ function App() {
   });
 
   useEffect(() => {
+    const setUserState = async (something) => {
+      try {
+        const resp = await something;
+        dispatch(userAction.setUser(resp.data));
+        if (resp.data?.preferences) {
+          dispatch(preferenceAction.setUserPreference(resp.data?.preferences));
+        }
+        // Set billing state
+        if (resp.data?.subscriptions) {
+          const subscriptionDetails = await extractPlanFromSubscriptions(
+            resp.data?.subscriptions
+          );
+
+          dispatch(subscriptionAction.setSubscription(subscriptionDetails));
+        }
+
+        if (resp.data?.payments)
+          dispatch(paymentsAction.setBillingDetails(resp.data?.payments));
+      } catch (err) {
+        if (err.message === "JWT EXPIRED ERROR") {
+          localStorage.removeItem("token");
+          navigate("/");
+        }
+        logger.error(err);
+      }
+    };
     // Read access token
     const storageToken = localStorage.getItem("token");
     if (storageToken) {
@@ -57,11 +82,9 @@ function App() {
     } else {
       dispatch(authenticationAction.logout());
     }
-  }, []);
+  }, [dispatch, navigate]);
 
   useEffect(() => {
-    logger.log("userPreferences in useEffect");
-    logger.log(userPreferences);
     if (userPreferences.theme !== undefined) {
       setThemeMethod(userPreferences.theme);
     }
@@ -69,45 +92,6 @@ function App() {
       i18next.changeLanguage(userPreferences.language);
     }
   }, [userPreferences, userPreferences.language, userPreferences.theme]);
-
-  const setUserState = async (something) => {
-    logger.log("SetUserState method");
-    try {
-      const resp = await something;
-      logger.log("Incoming data on log in response.data.userData");
-      logger.log(resp.data);
-      logger.log("resp.data");
-      logger.log(resp.data);
-      dispatch(userAction.setUser(resp.data));
-      if (resp.data?.preferences) {
-        dispatch(preferenceAction.setUserPreference(resp.data?.preferences));
-      }
-      // Set billing state
-      logger.log("resp.data?.payments");
-      logger.log(resp.data?.payments);
-
-      logger.log("resp.data?.subscriptions!!!!");
-      logger.log(resp.data?.subscriptions);
-      if (resp.data?.subscriptions) {
-        logger.log("plan");
-        logger.log("extractPlanFromSubscriptions app.js");
-        const subscriptionDetails = await extractPlanFromSubscriptions(
-          resp.data?.subscriptions
-        );
-        logger.log(subscriptionDetails);
-        dispatch(subscriptionAction.setSubscription(subscriptionDetails));
-      }
-
-      if (resp.data?.payments)
-        dispatch(paymentsAction.setBillingDetails(resp.data?.payments));
-    } catch (err) {
-      if (err.message === "JWT EXPIRED ERROR") {
-        localStorage.removeItem("token");
-        navigate("/");
-      }
-      logger.error(err);
-    }
-  };
 
   const setThemeMethod = (value) => {
     switch (value) {
@@ -172,7 +156,10 @@ function App() {
             >
               {/* Nested routes within Dashboard */}
               <Route path="" element={<OrganizationHome />} />
-              <Route path="organization/:organizationId" element={<OrganizationWorkSpace />} />
+              <Route
+                path="organization/:organizationId"
+                element={<OrganizationWorkSpace />}
+              />
             </Route>
             <Route
               path="/email-not-verified"
