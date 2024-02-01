@@ -27,7 +27,6 @@ import Support from "./pages/Support";
 import Membership from "./pages/Membership";
 import UserPreferences from "./pages/UserPreferences";
 import Checkout from "./pages/Checkout";
-import PaymentFormStripe from "./components/checkout/PaymentFormStripe";
 import { preferenceAction } from "./store/preferences";
 import { paymentsAction } from "./store/payments";
 import { subscriptionAction } from "./store/subscription";
@@ -47,6 +46,32 @@ function App() {
   });
 
   useEffect(() => {
+    const setUserState = async (something) => {
+      try {
+        const resp = await something;
+        dispatch(userAction.setUser(resp.data));
+        if (resp.data?.preferences) {
+          dispatch(preferenceAction.setUserPreference(resp.data?.preferences));
+        }
+        // Set billing state
+        if (resp.data?.subscriptions) {
+          const subscriptionDetails = await extractPlanFromSubscriptions(
+            resp.data?.subscriptions
+          );
+
+          dispatch(subscriptionAction.setSubscription(subscriptionDetails));
+        }
+
+        if (resp.data?.payments)
+          dispatch(paymentsAction.setBillingDetails(resp.data?.payments));
+      } catch (err) {
+        if (err.message === "JWT EXPIRED ERROR") {
+          localStorage.removeItem("token");
+          navigate("/");
+        }
+        logger.error(err);
+      }
+    };
     // Read access token
     const storageToken = localStorage.getItem("token");
     if (storageToken) {
@@ -57,7 +82,7 @@ function App() {
     } else {
       dispatch(authenticationAction.logout());
     }
-  }, []);
+  }, [dispatch, navigate]);
 
   useEffect(() => {
     if (userPreferences.theme !== undefined) {
@@ -67,33 +92,6 @@ function App() {
       i18next.changeLanguage(userPreferences.language);
     }
   }, [userPreferences, userPreferences.language, userPreferences.theme]);
-
-  const setUserState = async (something) => {
-    try {
-      const resp = await something;
-      dispatch(userAction.setUser(resp.data));
-      if (resp.data?.preferences) {
-        dispatch(preferenceAction.setUserPreference(resp.data?.preferences));
-      }
-      // Set billing state
-      if (resp.data?.subscriptions) {
-        const subscriptionDetails = await extractPlanFromSubscriptions(
-          resp.data?.subscriptions
-        );
-
-        dispatch(subscriptionAction.setSubscription(subscriptionDetails));
-      }
-
-      if (resp.data?.payments)
-        dispatch(paymentsAction.setBillingDetails(resp.data?.payments));
-    } catch (err) {
-      if (err.message === "JWT EXPIRED ERROR") {
-        localStorage.removeItem("token");
-        navigate("/");
-      }
-      logger.error(err);
-    }
-  };
 
   const setThemeMethod = (value) => {
     switch (value) {

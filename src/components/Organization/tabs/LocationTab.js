@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { Box, Button } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
@@ -11,8 +11,8 @@ import Alert from "./../../Alert";
 const LocationTab = (props) => {
   const params = useParams();
 
-  const [locations, setLocations]=useState([])
-  const [openCreateDialog, setOpenCreateDialog]=useState(false)
+  const [locations, setLocations] = useState([]);
+  const [openCreateDialog, setOpenCreateDialog] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [alertSeverity, setAlertSeverity] = useState("");
@@ -24,27 +24,28 @@ const LocationTab = (props) => {
     }, 3000);
   };
 
-  const getLocations = async () => {
+  const getLocations = useCallback(async () => {
     const locationsList = await storageService.getLocationsByOrganization({
       organizationId: params?.organizationId,
     });
-    setLocations(locationsList?.data?.locations)
-  };
+    setLocations(locationsList?.data?.locations);
+  }, [params?.organizationId]);
+  
   useEffect(() => {
     getLocations();
-  },[]);
+  }, [getLocations]);
 
   return (
     <>
-    <Button
-          variant="contained"
-          onClick={() => {
-            setOpenCreateDialog(true);
-          }}
-        >
-          <AddIcon />
-          Create Location
-        </Button>
+      <Button
+        variant="contained"
+        onClick={() => {
+          setOpenCreateDialog(true);
+        }}
+      >
+        <AddIcon />
+        Create Location
+      </Button>
       <Box
         sx={{
           display: "flex",
@@ -53,19 +54,21 @@ const LocationTab = (props) => {
         }}
       >
         {locations.map((location, index) => {
-            return (
-        <LocationCard key={index} location={location}></LocationCard>)})}
+          return <LocationCard key={index} location={location}></LocationCard>;
+        })}
       </Box>
-      
+
       <CreateLocationDialog
-      handleClose = {()=>{setOpenCreateDialog(false)}}
-      open={openCreateDialog}
-      // Alert methods
-      openAlert={openAlert}
-      setAlertSeverity={setAlertSeverity}
-      setAlertOpen={setAlertOpen}
-      setAlertMessage={setAlertMessage}
-      refreshLocations={getLocations}
+        handleClose={() => {
+          setOpenCreateDialog(false);
+        }}
+        open={openCreateDialog}
+        // Alert methods
+        openAlert={openAlert}
+        setAlertSeverity={setAlertSeverity}
+        setAlertOpen={setAlertOpen}
+        setAlertMessage={setAlertMessage}
+        refreshLocations={getLocations}
       />
 
       {/* Error, info, warning and success */}

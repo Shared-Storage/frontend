@@ -28,8 +28,8 @@ const LocationCard = (props) => {
           {props.location.name}
         </Typography>
         <Typography gutterBottom variant="p" component="div" align="left">
-          {props.location.description.substring(0, maxDescriptionCharacterCount)}
-          {props.location.description.length > maxDescriptionCharacterCount ? "..." : ""}
+          {props?.location?.description?.substring(0, maxDescriptionCharacterCount)}
+          {props?.location?.description?.length > maxDescriptionCharacterCount ? "..." : ""}
         </Typography>
       </CardContent>
       {/* </CardActionArea> */}
