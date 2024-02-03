@@ -1,11 +1,13 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import CardActions from "@mui/material/CardActions";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 
 const ItemCard = (props) => {
   return (
@@ -52,7 +54,13 @@ const ItemCard = (props) => {
           ))}
         </Stack>
       </CardContent>
-      {/* </CardActionArea> */}
+      <CardActions>
+        <DeleteOutlinedIcon
+          style={{ cursor: "pointer" }}
+          color="secondary"
+          onClick={() => props.handleDeletePressed(props?.item)}
+        />
+      </CardActions>
     </Card>
   );
 };

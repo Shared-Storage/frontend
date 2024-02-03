@@ -7,8 +7,9 @@ import * as storageService from "./../../../services/storage";
 import ItemCard from "./ItemCard";
 import CreateItemDialog from "./CreateItemDialog";
 import Alert from "./../../Alert";
+import DeleteConfirmationDialog from "./DeleteConfirmationDialog";
 
-const ItemTab = (props) => {
+const ItemTab = (_props) => {
   const params = useParams();
 
   const [items, setItems] = useState([]);
@@ -16,6 +17,33 @@ const ItemTab = (props) => {
   const [openAlert, setOpenAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [alertSeverity, setAlertSeverity] = useState("");
+  const [deleteObject, setDeleteObject] = useState({
+    item: undefined,
+    open: false,
+  });
+
+  const handleDeletePressed = (itemToBeDeleted) => {
+    setDeleteObject({ item: itemToBeDeleted, open: true });
+  };
+  const closeDeleteDialog = () => {
+    setDeleteObject({ item: undefined, open: false });
+  };
+  const handleConfirmDelete = async () => {
+    try {
+      await storageService.deleteItem(deleteObject.item);
+      closeDeleteDialog();
+      getItems(); // Refresh items
+      // Alert
+      setAlertMessage("Item deleted");
+      setAlertSeverity("success");
+      setAlertOpen();
+    } catch (error) {
+      setAlertMessage("Error: Item not deleted");
+      setAlertSeverity("error");
+      setAlertOpen();
+      closeDeleteDialog();
+    }
+  };
 
   const setAlertOpen = () => {
     setOpenAlert(true);
@@ -29,7 +57,7 @@ const ItemTab = (props) => {
       organizationId: params?.organizationId,
     });
     setItems(itemsList?.data?.items);
-  },[params?.organizationId]);
+  }, [params?.organizationId]);
   useEffect(() => {
     getItems();
   }, [getItems]);
@@ -53,7 +81,13 @@ const ItemTab = (props) => {
         }}
       >
         {items.map((item, index) => {
-          return <ItemCard key={index} item={item}></ItemCard>;
+          return (
+            <ItemCard
+              key={index}
+              item={item}
+              handleDeletePressed={handleDeletePressed}
+            ></ItemCard>
+          );
         })}
       </Box>
 
@@ -72,6 +106,12 @@ const ItemTab = (props) => {
 
       {/* Error, info, warning and success */}
       <Alert severity={alertSeverity} open={openAlert} message={alertMessage} />
+      <DeleteConfirmationDialog
+        name={deleteObject?.item?.name}
+        open={deleteObject?.open}
+        handleClose={closeDeleteDialog}
+        handleConfirmDelete={handleConfirmDelete}
+      />
     </>
   );
 };
