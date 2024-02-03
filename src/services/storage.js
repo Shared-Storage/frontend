@@ -72,3 +72,18 @@ export const getItemsByOrganization = async (data) => {
     throw Error(error.message);
   }
 };
+
+export const deleteItem = async (item) => {
+  try {
+    const response = await axios({
+      method: "delete",
+      url:
+        process.env.REACT_APP_STORAGE_SERVICE_BACKEND_LINK +
+        `/v1/item/${item?._id}`,
+    });
+    return response;
+  } catch (error) {
+    logger.error(error);
+    throw Error(error.message);
+  }
+};
