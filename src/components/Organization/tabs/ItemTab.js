@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { Box, Button } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 
-import * as logger from "./../../../utils/logger.js";
 import * as storageService from "./../../../services/storage";
 import ItemCard from "./ItemCard";
 import CreateItemDialog from "./CreateItemDialog";
@@ -30,13 +29,20 @@ const ItemTab = (_props) => {
     setDeleteObject({ item: undefined, open: false });
   };
   const handleConfirmDelete = async () => {
-    logger.log("Handle confirm delete");
-    logger.log(deleteObject.item);
-    const response = await storageService.deleteItem(deleteObject.item);
-    logger.log("response:");
-    logger.log(response);
-    closeDeleteDialog();
-    getItems();
+    try {
+      await storageService.deleteItem(deleteObject.item);
+      closeDeleteDialog();
+      getItems(); // Refresh items
+      // Alert
+      setAlertMessage("Item deleted");
+      setAlertSeverity("success");
+      setAlertOpen();
+    } catch (error) {
+      setAlertMessage("Error: Item not deleted");
+      setAlertSeverity("error");
+      setAlertOpen();
+      closeDeleteDialog();
+    }
   };
 
   const setAlertOpen = () => {
