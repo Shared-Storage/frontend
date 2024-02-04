@@ -8,8 +8,10 @@ import Chip from "@mui/material/Chip";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import { useNavigate } from "react-router-dom";
 
 const ItemCard = (props) => {
+  const navigate = useNavigate();
   return (
     <Card
       sx={{ maxWidth: 345, margin: "25px auto", width: 300 }}
@@ -42,6 +44,9 @@ const ItemCard = (props) => {
             label={props.item.location?.name}
             variant="outlined"
             clickable
+            onClick={() => {
+              navigate(`?locationId=${props.item.location?._id}`);
+            }}
           />
           {props.item.tags.map((tag, index) => (
             <Chip
