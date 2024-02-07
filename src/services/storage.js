@@ -95,6 +95,52 @@ export const getItemsByOrganizationByLocation = async ({
   }
 };
 
+export const searchItemByOrganization = async ({
+  organizationId,
+  searchInput,
+}) => {
+  try {
+    const response = await axios({
+      method: "get",
+      url:
+        process.env.REACT_APP_STORAGE_SERVICE_BACKEND_LINK +
+        "/v1/item/org-search/" +
+        organizationId +
+        "/" +
+        searchInput,
+    });
+    return response;
+  } catch (error) {
+    logger.error("Error flag 1");
+    logger.error(error);
+    throw Error(error.message);
+  }
+};
+export const searchItemByOrganizationbyLocation = async ({
+  organizationId,
+  locationId,
+  searchInput,
+}) => {
+  try {
+    const response = await axios({
+      method: "get",
+      url:
+        process.env.REACT_APP_STORAGE_SERVICE_BACKEND_LINK +
+        "/v1/item/org-location-search/" +
+        organizationId +
+        "/" +
+        locationId +
+        "/" +
+        searchInput,
+    });
+    return response;
+  } catch (error) {
+    logger.error("Error flag 1");
+    logger.error(error);
+    throw Error(error.message);
+  }
+};
+
 export const deleteItem = async (item) => {
   try {
     const response = await axios({
