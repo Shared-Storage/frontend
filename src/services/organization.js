@@ -30,6 +30,7 @@ export const createOrganization = async (data) => {
     throw Error(error.message);
   }
 };
+
 export const getUserOrganizations = async (data) => {
   try {
     const response = await axios({
@@ -75,6 +76,7 @@ export const acceptInvitationToOrganization = async (data) => {
     throw Error(error.message);
   }
 };
+
 export const declineInvitationToOrganization = async (data) => {
   try {
     const response = await axios({

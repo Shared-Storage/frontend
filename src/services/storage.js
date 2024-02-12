@@ -116,6 +116,7 @@ export const searchItemByOrganization = async ({
     throw Error(error.message);
   }
 };
+
 export const searchItemByOrganizationbyLocation = async ({
   organizationId,
   locationId,
@@ -153,5 +154,33 @@ export const deleteItem = async (item) => {
   } catch (error) {
     logger.error(error);
     throw Error(error.message);
+  }
+};
+
+export const uploadItemImage = async (image) => {
+  try {
+    const response = await axios({
+      method: "post",
+      url: process.env.REACT_APP_STORAGE_SERVICE_BACKEND_LINK + "/v1/item/item-image-upload",
+      data: image,
+    });
+    return response;
+  } catch (err) {
+    logger.error(err);
+    throw Error(err.message);
+  }
+};
+
+export const uploadLocationImage = async (image) => {
+  try {
+    const response = await axios({
+      method: "post",
+      url: process.env.REACT_APP_STORAGE_SERVICE_BACKEND_LINK + "/v1/location/location-image-upload",
+      data: image,
+    });
+    return response;
+  } catch (err) {
+    logger.error(err);
+    throw Error(err.message);
   }
 };
