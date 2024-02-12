@@ -20,19 +20,18 @@ import {
   InputAdornment,
 } from "@mui/material";
 import { useParams } from "react-router-dom";
-
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-
 import { Skeleton } from "@mui/material";
 import { useForm, useFieldArray } from "react-hook-form";
 
-// import * as organizationService from "../../services/organization";
+import * as storageService from "../../../services/storage";
 import * as logger from "../../../utils/logger";
 import {
   createItem,
   getLocationsByOrganization,
 } from "../../../services/storage";
+import ImageUploader from "../../ImageUploader";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -77,6 +76,7 @@ export default function CreateItemDialog(props) {
   const params = useParams();
   //Form
   const {
+    setValue,
     register,
     control,
     handleSubmit,
@@ -154,6 +154,8 @@ export default function CreateItemDialog(props) {
     props.handleClose();
   };
 
+  const handleUploadedImageUrl = (imageUrl) => setValue("imageUrl", imageUrl);
+
   return (
     <div>
       <BootstrapDialog
@@ -193,6 +195,13 @@ export default function CreateItemDialog(props) {
                     required
                   />
                 )}
+              </Grid>
+              <Grid item xs={12}>
+                <ImageUploader
+                  handleUploadedImageUrl={handleUploadedImageUrl}
+                  buttonText="Upload image"
+                  uploadImage={storageService.uploadItemImage}
+                />
               </Grid>
               <Grid item xs={12}>
                 {loading ? (

@@ -21,9 +21,10 @@ import Box from "@mui/material/Box";
 import { Skeleton } from "@mui/material";
 import { useForm } from "react-hook-form";
 
-// import * as organizationService from "../../services/organization";
+import * as storageService from "../../../services/storage";
 import * as logger from "../../../utils/logger";
 import { createLocation } from "../../../services/storage";
+import ImageUploader from "../../ImageUploader";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -68,6 +69,7 @@ export default function CreateLocationDialog(props) {
   const params = useParams();
   //Form
   const {
+    setValue,
     register,
     handleSubmit,
     formState: { errors },
@@ -121,6 +123,9 @@ export default function CreateLocationDialog(props) {
     reset();
     props.handleClose();
   };
+
+  const handleUploadedImageUrl = (imageUrl) => setValue("imageUrl", imageUrl);
+  
   return (
     <div>
       <BootstrapDialog
@@ -160,6 +165,13 @@ export default function CreateLocationDialog(props) {
                     required
                   />
                 )}
+              </Grid>
+              <Grid item xs={12}>
+                <ImageUploader
+                  handleUploadedImageUrl={handleUploadedImageUrl}
+                  buttonText="Upload image"
+                  uploadImage={storageService.uploadLocationImage}
+                />
               </Grid>
               <Grid item xs={12}>
                 {loading ? (
